@@ -10,8 +10,11 @@ async def get_date():
     # proc = await asyncio.create_subprocess_exec(
     #     sys.executable, '-m', 'test2', 'list',
     #     stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
+    env = os.environ.copy()
+    env['PYTHONIOENCODING'] = 'UTF-8'
+    env['SCRAPY_PROJECT'] = 'arts'
     proc = await asyncio.create_subprocess_exec(
-        sys.executable, '-m', 'test2', 'crawl',
+        sys.executable, '-m', 'test2.py', 'crawl',
         stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
 
     # Read one line of output.
