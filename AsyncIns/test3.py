@@ -1,19 +1,19 @@
-from tornado.process import Subprocess
-from tornado.ioloop import IOLoop
-import logging
+import asyncio
+import sys
+import os
+from asyncio.subprocess import PIPE
 
-async def run_pri():
-    proc = Subprocess('ls',
-                                                   stdout=Subprocess.STREAM,
-                                                   stderr=Subprocess.STREAM)
+async def executors():
+    env = os.environ.copy()
+    target = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'test2.py')
+    proc = await asyncio.create_subprocess_exec(sys.executable, '-m', 'test2.py', 'list', stdout=PIPE, stderr=PIPE, env=env)
 
-    stdout = proc.stdout.reading()
-    stderr = proc.stderr
-    stdin = proc.stdin
-    pid = proc.pid
-    stdout.write()
+    stdout, stderr = await proc.communicate()
 
+    if stdout:
+        print(f'[stdout]\n{stdout.decode()}')
+    if stderr:
+        print(f'[stderr]\n{stderr.decode()}')
 
-if __name__ == "__main__":
-    loop = IOLoop.current()
-    loop.run_sync(run_pri)
+asyncio.run(executors())
+

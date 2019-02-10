@@ -1,10 +1,12 @@
 from datetime import datetime
 from model import TaskQueue
+import time
 
 
 async def traversal_queue():
-    traversals = await TaskQueue.all()
-    for traversal in traversals:
-        project = traversal.project
-        spider = traversal.spider
-        print(project, spider)
+    time.sleep(5)
+    print('-project-')
+
+
+async def task(project, spider, version):
+    print(project, spider, version, datetime.now().strftime('%Y-%m-%d %H:%M:%S'))

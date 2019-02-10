@@ -1,11 +1,13 @@
-from random import randint
+from datetime import datetime
 from tornado.web import RequestHandler
 
+import jwt
 from tornado.httpclient import HTTPError
 from tortoise.queryset import Q
-from model import SuperUser, User
-from .forms import SuperUserForm, CreateUserForm
+from model import SuperUser, User, Permission, Role
+from .forms import *
 from ..common.util import make_md5, random_letters
+from settings import secret
 
 
 class SuperUserRegHandler(RequestHandler):
@@ -44,7 +46,7 @@ class CreateUserHandler(RequestHandler):
         if not register.validate(): raise HTTPError(400, message='params is error')
         username = register.username.data
         email = register.email.data
-        res = await User.filter(Q(username=username) | Q(email=email)).count()
+        res = await User.filter(Q(username=username) | Q(email=email))
         if res:
             self.set_status(400)
             self.finish('username or email exits')
@@ -66,3 +68,76 @@ class CreateUserHandler(RequestHandler):
         if not users.validate(): raise HTTPError(400, message='params is error')
         id = users.id.data
         await User.filter(id=id).delete()
+
+
+class LoginHandler(RequestHandler):
+    async def post(self, *args, **kwargs):
+        users = LoginForm(self.request.arguments)
+        if not users.validate(): raise HTTPError(400, message='params is error')
+        username = users.username.data
+        pwd = make_md5(users.password.data)
+        code =users.code.data
+        status = await User.filter(Q(username=username ) & Q(status=True))
+        verify = await User.filter(Q(username=username) & Q(verify=True))
+
+        if status:
+            if verify:
+                user = await User.filter(Q(username=username) & Q(password=pwd)).first()
+            else:
+                user = await User.filter(Q(username=username) &
+                                         Q(password=pwd) &
+                                         Q(code=code)).first()
+                if user:
+                    await User.filter(username=username).update(verify=True)
+                else:
+                    self.write('verify code incorrect')
+            if user:
+                payload = {'id': user.id, 'username': user.username, 'exp': datetime.utcnow()}
+                token = jwt.encode(payload, secret, algorithm='HS256').decode('utf8')
+                self.finish({'id': user.id,'username': user.username, "token": token})
+            else:
+                self.finish('username or password incorrect')
+        else:
+            self.finish('Account not activated')
+
+
+class RoleHandler(RequestHandler):
+    async def get(self, *args, **kwargs):
+        role = await Role.all()
+        item = {}
+        for i in role:
+            dps = i.permissions
+            print(dps)
+        item['count'] = len(role)
+        item['data'] = [{'id': i.id, 'name': i.name, 'permissions': i.permissions,
+                         'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
+                        for i in role]
+        self.finish(item)
+
+    async def post(self, *args, **kwargs):
+        role = RoleForm(self.request.arguments)
+        if not role.validate(): raise HTTPError(400, message='params is error')
+        name = role.name.data
+        permissions = role.permissions.data
+        per = await Permission.filter(name=permissions).count()
+        if per:
+            await Role.create(name=name, permissions=permissions)
+        else:
+            self.set_status(400)
+        self.finish()
+
+    async def put(self, *args, **kwargs):
+        role = RoleForm(self.request.arguments)
+        if not role.validate(): raise HTTPError(400, message='params is error')
+        id = role.id.data
+        name = role.name.data
+        permissions = role.permissions.data
+        await Role.filter(id=id).update(Q(name=name) & Q(permissions=permissions))
+
+    async def delete(self, *args, **kwargs):
+        role = RoleForm(self.request.arguments)
+        if not role.validate(): raise HTTPError(400, message='params is error')
+        id = role.id.data
+        await Role.filter(id=id).delete()
+
+

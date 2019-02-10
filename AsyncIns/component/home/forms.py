@@ -18,22 +18,14 @@ class IncreaseForm(Form):
                                           message='order value not')])
     filters = StringField('filter', '', )
 
-class JobStoreForm(Form):
+
+class SchedulerForm(Form):
     project = StringField("project name", validators=[Length(max=160, message="Field Length Cannot Pass Validation")])
     version = IntegerField("version")
     spider = StringField("spider name")
-    custom = BooleanField('project type')
-    mode = StringField()
+    ins = BooleanField('project type')
+    mode = StringField('mode', validators=[AnyOf(values=('date', 'interval', 'cron'), message='mode error')])
     timer = StringField()
     status = BooleanField('status')
-
-
-
-class TaskQueueForm(Form):
-    project = StringField("project name", validators=[Length(max=160, message="Field Length Cannot Pass Validation")])
-    version = StringField("version", validators=[Length(max=32, message='version is too long')])
-    spider = StringField("spider name list")
-    custom = BooleanField('project type')
-    sett = StringField('settings', validators=[Length(max=255, message='Field Length Cannot Pass Validation')])
 
 

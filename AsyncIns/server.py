@@ -7,6 +7,7 @@ from urls import router
 from tortoise import Tortoise
 from component.scheduler.tasks import traversal_queue
 from settings import schedulers
+from model import Permission
 
 # define 定义一些可以在命令行中传递的参数以及类型
 define('port', default=8000, help='run on the given port', type=int)
@@ -18,10 +19,14 @@ if __name__ == "__main__":
     async def run():
         await Tortoise.init(db_url='sqlite://octopus.sqlite3', modules={'models': ['model']})
         await Tortoise.generate_schemas()
+        res = await Permission.all().count()
+        if not res:
+            for i in router:
+                await Permission.create(name=i.name)
 
     app = Application(router, debug=options.debug)
     app.listen(port=options.port)
-    schedulers.add_job(traversal_queue, 'interval', seconds=3)
+    # schedulers.add_job(traversal_queue, 'interval', seconds=3)
     schedulers.start()
     loop = ioloop.IOLoop.current()
     loop.run_sync(run)

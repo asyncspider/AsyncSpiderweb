@@ -1,8 +1,40 @@
-import logging
-print('print-test2')
-logging.error('logging-error-test2')
+import sys
+import os
+import shutil
+import tempfile
+from contextlib import contextmanager
 
+from scrapyd import get_application
+from scrapyd.interfaces import IEggStorage
+from scrapyd.eggutils import activate_egg
 
-def pri():
-    print('pri-print-test2')
-    logging.error('pri-logging-error-test2')
+@contextmanager
+def project_environment(project):
+    app = get_application()
+    eggstorage = app.getComponent(IEggStorage)
+    eggversion = '1549790905'
+    version, eggfile = eggstorage.get(project, eggversion)
+    if eggfile:
+        prefix = '%s-%s-' % (project, version)
+        fd, eggpath = tempfile.mkstemp(prefix=prefix, suffix='.egg')
+        lf = os.fdopen(fd, 'wb')
+        shutil.copyfileobj(eggfile, lf)
+        lf.close()
+        activate_egg(eggpath)
+    else:
+        eggpath = None
+    try:
+        assert 'scrapy.conf' not in sys.modules, "Scrapy settings already loaded"
+        yield
+    finally:
+        if eggpath:
+            os.remove(eggpath)
+
+def main():
+    project = 'arts'
+    with project_environment(project):
+        from scrapy.cmdline import execute
+        execute()
+
+if __name__ == '__main__':
+    main()

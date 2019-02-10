@@ -13,9 +13,10 @@ from component.home.storage import FileStorage
 class Environment:
     executor = ThreadPoolExecutor(2)
 
-    def __init__(self, project, version):
+    def __init__(self, project, spider, version):
         self.storage = FileStorage()
         self.project = project
+        self.spider = spider
         self.version = version
         self.file_path = '/home/gannicus/github/EggTest/projects/demo1/hello-1.0-py3.7.egg' # self.storage.makepath(self.project, self.version)
 
@@ -41,7 +42,7 @@ class Environment:
         ioloop.IOLoop.instance().add_callback(self.runner)
         print('ecs')
 
-    # @run_on_executor
+    @run_on_executor
     def runner(self):
         """ run the specified project  """
         start = datetime.now()

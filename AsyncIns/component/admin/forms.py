@@ -26,3 +26,14 @@ class CreateUserForm(Form):
                                           message='order value not')])
     filter = StringField('filter', '', )
 
+
+class LoginForm(Form):
+    username = StringField()
+    password = StringField()
+    code = StringField('verify code')
+
+
+class RoleForm(Form):
+    id = IntegerField()
+    name = StringField()
+    permissions = StringField()

@@ -1,23 +1,27 @@
 import uuid
 import os
-import json
+
 from time import time
+import ast
 from tornado.web import RequestHandler
 from tornado.httpclient import HTTPError
-from tortoise.queryset import Q
-import aiofiles
-from model import Increase, TaskQueue, User
-from .forms import IncreaseForm, TaskQueueForm, JobStoreForm
-from settings import settings, schedulers
+
+from model import Increase
+from .forms import IncreaseForm, SchedulerForm
+
 from .storage import FileStorage
 from .executor import Environment
 from concurrent.futures import ProcessPoolExecutor
+from ..common.util import authorization
+from settings import schedulers
+from component.scheduler.tasks import traversal_queue, task
 
 
 class IndexHandler(RequestHandler):
-    async def get(self, *args, **kwargs):
-        self.write('Octopus is running')
-
+    @authorization
+    async def post(self, *args, **kwargs):
+        sec = int(self.request.arguments.get('sec')[0])
+        schedulers.add_job(traversal_queue, 'interval', seconds=sec, max_instances=10)
 
 
 class IncreaseHandler(RequestHandler):
@@ -73,44 +77,21 @@ class IncreaseHandler(RequestHandler):
     #     version = increase.version.data
 
 
-#
-# class TaskQueueHandler(RequestHandler):
-#
-#
-#     async def tra(self):
-#         print(5)
-#
-#     async def get(self, *args, **kwargs):
-#
-#         schedulers.add_job(self.tra, 'interval', seconds=9)
-#         param = [self.tra, 'interval', 9]
-#
-#
-#
-#     async def post(self, *args, **kwargs):
-#         task = TaskQueueForm(self.request.arguments)
-#         if task.validate():
-#             project = task.project.data
-#             spider = task.spider.data
-#             version = task.version.data
-#             custom = task.custom.data
-#             sett = task.sett.data
-#             job_id = str(uuid.uuid4())
-#             await TaskQueue.create(project=project, spider=spider, version=version,
-#                                    custom=custom, sett=sett, job_id=job_id)
-
-
-class JobStoreHandler(RequestHandler):
+class SchedulerHandler(RequestHandler):
     async def post(self, *args, **kwargs):
-        job = JobStoreForm(self.request.arguments)
+        job = SchedulerForm(self.request.arguments)
         if not job.validate(): raise HTTPError(400, message='params is error')  # wtf validate
         project = job.project.data
         version = job.version.data
         spider = job.spider.data
-        custom = job.custom.data
+        ins = job.ins.data
         mode = job.mode.data
-        timer = job.timer.data
+        timer = ast.literal_eval(job.timer.data)
         status = job.status.data
-        async with Environment(project, version) as eir:
-            await eir.ecs()
+        schedulers.add_job(task, mode, trigger_args=timer, kwargs={"project": project, "spider": spider, "version": version}, )
+
+        #
+        # async with Environment(project, spider, version) as eir:
+        #     await eir.ecs()
+
 
