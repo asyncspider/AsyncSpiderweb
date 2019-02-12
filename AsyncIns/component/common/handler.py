@@ -10,4 +10,3 @@ class VerifyHandler(RequestHandler):
         ver = VerifyForm(self.request.arguments)
         email = ver.email.data
 
-        # send email

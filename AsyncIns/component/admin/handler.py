@@ -52,13 +52,13 @@ class LoginHandler(RequestHandler):
         payload = {'id': user.id, 'username': user.username, 'exp': datetime.utcnow()}
         token = jwt.encode(payload, secret, algorithm='HS256').decode('utf8')
         if user.role == 'superuser' or user.verify and user.status:
-            finish_resp(self, 200, {'id': user.id, 'username': user.username, "token": token})
+            finish_resp(self, 200, {'id': user.id, 'username': user.username, 'token': token})
             return None
         if user.status and not user.verify:
             res = await User.filter(Q(username=username) & Q(password=pwd) & Q(code=code)).first()
             if res:
                 await User.filter(Q(username=username) & Q(password=pwd) & Q(code=code)).update(verify=True)
-                finish_resp(self, 200, {'id': user.id, 'username': user.username, "token": token})
+                finish_resp(self, 200, {'id': user.id, 'username': user.username, 'token': token})
             else:
                 finish_resp(self, 400, 'verify code error')
         else:

@@ -2,7 +2,8 @@ from os import path, remove
 
 
 import aiofiles
-from settings import storage_dir
+from settings import storage_dir, temp_dir
+from ..common.util import activate_egg
 
 
 class FileStorage(object):
@@ -21,14 +22,24 @@ class FileStorage(object):
             await f.write(file)
         return "{project}_{version}.egg".format(project=project, version=version)
 
-    async def delete(self, project, version):
-        remove(self.makepath(project, version))
+    async def delete(self, file_path):
+        remove(file_path)
 
-    def makepath(self, project, version):
+    async def copy_to_temp(self, project, version, temp=temp_dir):
+        storage_egg = self.makepath(project, version)
+        temp_egg = self.makepath((project, version, temp))
+        async with aiofiles.open(storage_egg, 'wb') as f:
+            content = await f.read()
+        async with aiofiles.open(temp_egg, 'w') as f:
+            await f.write(content)
+        return temp_egg
+
+    def makepath(self, project, version, file_path=None):
+        """return: project_15409890987.egg
         """
-        return: arts_15409890987.egg
-        """
-        return path.join(self.storage_dir, "{project}_{version}.egg".format(project=project, version=version))
+        if not file_path:
+            file_path = self.storage_dir
+        return path.join(file_path, "{project}_{version}.egg".format(project=project, version=version))
 
     async def exists(self, project, version):
         """ does the file exists"""

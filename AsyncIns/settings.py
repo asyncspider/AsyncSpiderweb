@@ -5,6 +5,7 @@ from component.scheduler.base import TornadoScheduler
 
 basedir = path.dirname(path.abspath(__file__))
 storage_dir = path.join(basedir, 'filestorage')
+temp_dir = path.join(basedir, 'temp')
 project = 'Octopus'
 schedulers = TornadoScheduler()
 database = path.join(basedir, project+'.db')

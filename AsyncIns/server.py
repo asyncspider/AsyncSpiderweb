@@ -2,6 +2,7 @@ from tornado.web import Application
 from tornado import ioloop
 from tornado.options import options, define
 
+from tornado.platform.asyncio import AsyncIOMainLoop
 
 from urls import router
 from tortoise import Tortoise
@@ -19,6 +20,9 @@ if __name__ == "__main__":
         await Tortoise.init(db_url='sqlite://octopus.sqlite3', modules={'models': ['model']})
         await Tortoise.generate_schemas()
 
+
+    ioloop.IOLoop.configure('tornado.platform.asyncio.AsyncIOLoop')
+    # AsyncIOMainLoop().install()
     app = Application(router, debug=options.debug)
     app.listen(port=options.port)
     # schedulers.add_job(traversal_queue, 'interval', seconds=3)

@@ -9,7 +9,6 @@ from concurrent.futures import ThreadPoolExecutor
 from component.home.storage import FileStorage
 
 
-
 class Environment:
     executor = ThreadPoolExecutor(2)
 
@@ -50,28 +49,4 @@ class Environment:
         print(start)
         module.run()
         print(datetime.now())
-
-
-
-# if __name__ == "__main__":
-#     import asyncio
-#
-#     async def run():
-#         async with Environment() as eir:
-#             await eir.runner()
-#
-#     loop = asyncio.get_event_loop()
-#     loop.run_until_complete(run())
-#
-# if __name__ == "__main__":
-#     # paths = FileStorage().makepath('hello', '1500000000000')
-#     # sys.path.append(paths)
-#     # module = importlib.import_module('hello')
-#     import sys
-#     import importlib
-#     sys.path.append('/home/gannicus/PycharmProjects/octopus/filestorage/hello_1500000000000.egg')
-#
-#     module = importlib.import_module('hello')
-#     module.run()
-
 

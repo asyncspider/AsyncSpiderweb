@@ -5,12 +5,13 @@ from wtforms.validators import *
 
 from settings import default_page
 
-class IncreaseForm(Form):
+
+class DeployForm(Form):
     id = IntegerField('id', validators=[Regexp(regex=re.compile(('\d+')))])
-    project = StringField("project name", validators=[Length(max=60,message="project name is too long")])
+    project = StringField("project name", validators=[Length(max=100, message="project name is too long")])
     version = StringField("version", validators=[Length(max=13, message='version is too long')])
-    spiders = StringField("spider name list", validators=[Length(max=60,message="spider name is too long")])
-    custom = BooleanField("is it scrapy") #validators=[AnyOf(values=["scrapy", "notscrapy"])]
+    spiders = StringField("spider name list", validators=[Length(max=60, message="spider name is too long")])
+    ins = BooleanField("is it scrapy")
     limit = IntegerField('limit', default=default_page, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
     order = StringField('order', default='id',
                         validators=[AnyOf(values=["id", "-id", "spider_num",

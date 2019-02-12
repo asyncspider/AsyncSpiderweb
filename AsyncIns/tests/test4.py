@@ -25,16 +25,6 @@ async def get_date():
     await proc.wait()
     return out
 
-
-async def executeors():
-    pargs = [sys.executable, '-m', 'test2', 'list']
-    env = os.environ.copy()
-
-    proc = Popen(pargs, stdout=PIPE, stderr=PIPE, env=env)
-    out, err = proc.communicate()
-    print(out)
-
-
 # res = asyncio.run(executeors())
 date = asyncio.run(get_date())
 print(f"Current date: {date}")

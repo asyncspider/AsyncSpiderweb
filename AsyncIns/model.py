@@ -2,13 +2,13 @@ from tortoise.models import Model
 from tortoise.fields import *
 
 
-class Increase(Model):
+class Deploy(Model):
     """ 部署 """
     id = IntField(pk=True)
-    project = CharField(max_length=160,  comments="project name")
-    version = CharField(max_length=64, null=True, comments="egg version")
+    project = CharField(max_length=100,  comments="project name")
+    version = CharField(max_length=13, null=True, comments="egg version")
     spiders = TextField(null=True, comments="spider list")
-    custom = BooleanField(comments='True is not scrapy, False is scrapy')
+    ins = BooleanField(comments='asyncins or scrapy. True is asyncins')
     spider_num = IntField(max_length=3, null=True, verbose_name="spider number")
     egg_path = TextField(null=True, verbose_name="egg path")
     create_time = DatetimeField(auto_now=True)
@@ -29,7 +29,6 @@ class RunRecord(Model):
     start_time = CharField(max_length=255, null=True, verbose_name="启动时间")
     end_time = CharField(max_length=255, null=True, verbose_name="结束时间")
     run_time = CharField(max_length=255, null=True, verbose_name="运行时间")
-
 
     def __str__(self):
         return self.spider
