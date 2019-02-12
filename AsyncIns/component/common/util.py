@@ -20,17 +20,20 @@ def random_letters(min=97, max=123):
 
 
 def authorization(func):
-    """ authorization decorator for json web token"""
+    """ authorization decorator for json web token and permission"""
     @wraps(func)
     async def wrapper(self, *arg, **kwargs):
         token = self.request.headers.get('Authorization')
+        level = {'observer': 1, 'developer': 2, 'superuser': 3}
+        handler_level = level.get(self.permission)
         if token:
             try:
                 info = jwt.decode(token, secret, leeway=expire, options={'verify_exp': True})
                 id = info.get('id')
                 username = info.get('username')
                 user = await User.filter(Q(id=id) & Q(username=username))
-                if user:
+                user_role = level.get(user.role)
+                if user and user_role >= handler_level:
                     self._current_user = user
                     await func(self, *arg, **kwargs)
                 else:
@@ -41,3 +44,8 @@ def authorization(func):
             self.set_status(401)
         self.finish()
     return wrapper
+
+
+def finish_resp(self, status: int, message: str):
+    self.set_status(status)
+    self.finish(message)

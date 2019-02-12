@@ -18,8 +18,10 @@ from component.scheduler.tasks import traversal_queue, task
 
 
 class IndexHandler(RequestHandler):
+    permission = 'observer'
+
     @authorization
-    async def post(self, *args, **kwargs):
+    async def get(self, *args, **kwargs):
         sec = int(self.request.arguments.get('sec')[0])
         schedulers.add_job(traversal_queue, 'interval', seconds=sec, max_instances=10)
 

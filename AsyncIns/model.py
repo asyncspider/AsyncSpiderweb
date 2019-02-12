@@ -75,20 +75,11 @@ class User(Model):
     status = BooleanField(default=True)
     verify = BooleanField(default=False)
     code = CharField(max_length=6)
-    role = ManyToManyField('models.Role', related_name='roles')
+    role = CharField(max_length=10)
     create_time = DatetimeField(auto_now=True)
 
     def __str__(self):
         return self.username
-
-class SuperUser(Model):
-    id = IntField(pk=True)
-    username = CharField(max_length=64)
-    password = CharField(max_length=64)
-    email = CharField(max_length=100, null=True)
-    superuser = BooleanField(default=True)
-    verify = BooleanField(default=False)
-    create_time = DatetimeField(auto_now=True)
 
 
 class Verify(Model):
@@ -99,45 +90,5 @@ class Verify(Model):
 
     def __str__(self):
         return self.code
-
-
-class Permission(Model):
-    id = IntField(pk=True)
-    name = CharField(max_length=160)
-
-    def __str__(self):
-        return self.name
-
-
-class Role(Model):
-    id = IntField(pk=True)
-    name = CharField(max_length=160)
-    permissions = ManyToManyField('models.Permission', related_name='perm')
-    create_time = DatetimeField(auto_now=True)
-
-    def __str__(self):
-        return self.name
-
-#
-# class GrantAuth(Model):
-#     id = IntField(pk=True)
-#     user = ForeignKeyField('User',  on_delete="CASCADE")
-#     roles = ManyToManyField('Role')
-#     create_time = DatetimeField(auto_now=True)
-#
-#     def __str__(self):
-#         return self.user
-
-#
-# class ContentType(Model):
-#     name = CharField(max_length=160)
-#     model = CharField(max_length=160, comment='python model name')
-#     create_time = DatetimeField(auto_now=True)
-#
-#
-#     def __str__(self):
-#         return self.name
-
-
 
 
