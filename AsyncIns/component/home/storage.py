@@ -25,20 +25,22 @@ class FileStorage(object):
     def delete(self, file_path):
         remove(file_path)
 
-    async def copy_to_temp(self, project, version, temp=temp_dir):
+    async def copy_to_temp(self, project, version, temp=temp_dir, job=None):
         storage_egg = self.makepath(project, version)
-        temp_egg = self.makepath(project, version, temp)
+        temp_egg = self.makepath(project, version, temp, job)
         async with aiofiles.open(storage_egg, 'rb') as f:
             content = await f.read()
         async with aiofiles.open(temp_egg, 'wb') as f:
             await f.write(content)
         return temp_egg
 
-    def makepath(self, project, version, file_path=None):
+    def makepath(self, project, version, file_path=None, job=None):
         """return: project_15409890987.egg
         """
         if not file_path:
             file_path = self.storage_dir
+        if job:
+            return path.join(file_path, "{job}.egg".format(job=job))
         return path.join(file_path, "{project}_{version}.egg".format(project=project, version=version))
 
     async def exists(self, project, version):

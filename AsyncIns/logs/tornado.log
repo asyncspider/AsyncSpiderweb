@@ -1,0 +1,8 @@
+[I 190213 22:36:14 base:162] Scheduler started
+[E 190213 22:36:16 handler:163] 'No job by the id of b7d4cf58-2f95-11e9-8fd9-488ad21e5e8a was found'
+[I 190213 22:36:16 web:2162] 200 PUT /api/v1/schedulers?id=1&status=false&timer=%7B%27seconds%27:%205%7D (::1) 57.73ms
+[I 190213 22:36:41 autoreload:199] /home/gannicus/github/AsyncIns/AsyncIns/server.py modified; restarting server
+[I 190213 22:37:39 base:162] Scheduler started
+[I 190213 22:37:44 base:162] Scheduler started
+[I 190213 22:39:39 base:162] Scheduler started
+[I 190213 22:39:45 web:2162] 200 PUT /api/v1/schedulers?id=1&status=false&timer=%7B%27seconds%27:%205%7D (::1) 3.37ms

@@ -95,19 +95,33 @@ def get_user_from_jwt(token):
     return username
 
 
+def timedelta_format(period):
+    """timedelta to str for human
+    :return: 9-days,18:08:15
+    """
+    value = period.total_seconds()
+    minute, second = divmod(value, 60)
+    hour, minute = divmod(minute, 60)
+    day, hour = divmod(hour, 24)
+    return "{day}-days, {hour}:{minute}:{second}".format(
+        day=int(day), hour=int(hour), minute=int(minute), second=round(second, 2))
+
+
 class InsProtocol(asyncio.SubprocessProtocol):
     def __init__(self, exit_future):
         self.exit_future = exit_future
         self.output = bytearray()
+        self.start = None
+        self.end = None
 
     def connection_made(self, transport):
-        print('start time: %s' % datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        self.start = datetime.now()
 
     def pipe_data_received(self, fd, data):
         self.output.extend(data)
 
     def process_exited(self):
-        print('end time: %s' % datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        self.end = datetime.now()
         self.exit_future.set_result(True)
 
 
@@ -123,5 +137,9 @@ async def ins_subprocess(target: str, operation: str, spider=''):
         stdout=asyncio.subprocess.PIPE)
     await exit_future
     transport.close()
-    data = bytes(protocol.output)
-    return data.decode('ascii').rstrip()
+    std = bytes(protocol.output).decode('ascii').rstrip()
+    period = timedelta_format(protocol.end - protocol.start)
+    return [protocol.start.strftime('%Y-%m-%d %H:%M:%S'),
+            protocol.end.strftime('%Y-%m-%d %H:%M:%S'),
+            period, std]
+

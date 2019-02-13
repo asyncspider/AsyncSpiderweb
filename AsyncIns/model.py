@@ -19,17 +19,40 @@ class Projects(Model):
         return self.project
 
 
-class SchedulerRecord(Model):
+class Schedulers(Model):
+    """ 调度记录模型 """
+    id = IntField(pk=True)
+    jid = CharField(max_length=64, comments='scheduler job id')
+    project = CharField(max_length=160, null=True, comments="project name")
+    spider = CharField(max_length=160, null=True, comments="spider name")
+    version = CharField(max_length=64, null=True, comments="egg version")
+    ins = BooleanField(comments='asyncins or scrapy. True is asyncins')
+    job = CharField(max_length=255, null=True, comments="job hash")
+    mode = CharField(max_length=255, comments='timer mode,o is interval,1 is cron, 2 is date', null=True)
+    timer = CharField(max_length=255, comments='time rule or time value')
+    status = BooleanField(null=True, comments='scheduler status')
+    creator = CharField(max_length=64, comments='creator username', null=True)
+    create_time = DatetimeField(null=True)
+
+    def __str__(self):
+        return self.spider
+
+
+class Records(Model):
     """ 运行记录模型 """
     id = IntField(pk=True)
     project = CharField(max_length=160, null=True, comments="project name")
     spider = CharField(max_length=160, null=True, comments="spider name")
     version = CharField(max_length=64, null=True, comments="egg version")
+    ins = BooleanField(comments='asyncins or scrapy. True is asyncins')
     job = CharField(max_length=255, null=True, comments="job hash")
-    pid = IntField(verbose_name="process id", null=True)
-    start_time = CharField(max_length=255, null=True, comments="start time")
-    end_time = CharField(max_length=255, null=True, comments="end time")
-    run_time = CharField(max_length=255, null=True, comments="run time")
+    mode = CharField(max_length=255, comments='timer mode,o is interval,1 is cron, 2 is date', null=True)
+    timer = CharField(max_length=255, comments='time rule or time value')
+    status = BooleanField(null=True, comments='scheduler status')
+    start = CharField(max_length=255, null=True, comments="start time")
+    end = CharField(max_length=255, null=True, comments="end time")
+    period = CharField(max_length=255, null=True, comments="run time")
+    creator = CharField(max_length=64, comments='creator username', null=True)
     create_time = DatetimeField(null=True)
 
     def __str__(self):

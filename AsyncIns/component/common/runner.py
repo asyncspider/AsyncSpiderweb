@@ -21,14 +21,15 @@ from component.home.storage import FileStorage
 class Environment(object):
     executor = ThreadPoolExecutor(2)
 
-    def __init__(self, project, version):
+    def __init__(self, project, version, job):
         self.storage = FileStorage()
         self.project = project
         self.version = version
+        self.job = job
         self.file_path = self.storage.makepath(self.project, self.version)
 
     async def __aenter__(self):
-        self.temp_egg = await self.storage.copy_to_temp(self.project, self.version)
+        self.temp_egg = await self.storage.copy_to_temp(self.project, self.version, self.job)
         activate_egg(self.temp_egg)
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
@@ -37,8 +38,8 @@ class Environment(object):
 
 
 async def main():
-    project, version = os.environ['SCRAPY_PROJECT'], os.environ['SCRAPY_VERSION']
-    async with Environment(project, version):
+    project, version, job = os.environ['SCRAPY_PROJECT'], os.environ['SCRAPY_VERSION'], os.environ['SCRAPY_JOB']
+    async with Environment(project, version, job):
         from scrapy.cmdline import execute
         execute()
 
