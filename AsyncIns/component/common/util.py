@@ -37,9 +37,9 @@ def authorization(func):
         if token:
             try:
                 info = jwt.decode(token, secret, leeway=expire, options={'verify_exp': True})
-                id = info.get('id')
+                user_id = info.get('id')
                 username = info.get('username')
-                user = await User.filter(Q(id=id) & Q(username=username))
+                user = await User.filter(Q(id=user_id) & Q(username=username))
                 user_role = level.get(user.role)
                 if user and user_role >= handler_level:
                     self._current_user = user
@@ -57,6 +57,12 @@ def authorization(func):
 def finish_resp(self, status: int, message: str):
     self.set_status(status)
     self.finish(message)
+
+
+def write_resp(self, status: int, message: str):
+    self.set_status(status)
+    self.write(message)
+    return None
 
 
 async def get_scrapy_spiders(project, version):
@@ -81,6 +87,12 @@ def activate_egg(egg_path):
     d.activate()
     settings_module = d.get_entry_info('scrapy', 'settings').module_name
     os.environ.setdefault('SCRAPY_SETTINGS_MODULE', settings_module)
+
+
+def get_user_from_jwt(token):
+    info = jwt.decode(token, secret, leeway=expire, options={'verify_exp': True})
+    username = info.get('username')
+    return username
 
 
 class InsProtocol(asyncio.SubprocessProtocol):

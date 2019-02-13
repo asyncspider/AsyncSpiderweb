@@ -15,7 +15,6 @@ except ImportError:
     raise ImportError('TornadoScheduler requires tornado installed')
 
 
-
 class CustomBaseScheduler(BaseScheduler):
 
     def add_job(self, func, trigger=None, trigger_args=None, args=None, kwargs=None, id=None, name=None,

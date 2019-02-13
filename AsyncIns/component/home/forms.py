@@ -6,7 +6,7 @@ from wtforms.validators import *
 from settings import default_page
 
 
-class DeployForm(Form):
+class ProjectsForm(Form):
     id = IntegerField('id', validators=[Regexp(regex=re.compile(('\d+')))])
     project = StringField("project name", validators=[Length(max=100, message="project name is too long")])
     version = StringField("version", validators=[Length(max=13, message='version is too long')])

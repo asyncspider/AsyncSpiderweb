@@ -12,6 +12,7 @@ class UserForm(Form):
     password = StringField()
     status = BooleanField()
     email = StringField()
+    remark = StringField()
     role = StringField('user role',
                        validators=[AnyOf(values=('observer', 'developer', 'superuser'),
                                          message='user role error')])

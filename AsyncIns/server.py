@@ -2,11 +2,9 @@ import asyncio
 from tornado.web import Application
 from tornado import ioloop
 from tornado.options import options, define
-from tornado.platform.asyncio import AnyThreadEventLoopPolicy
 
 from urls import router
 from tortoise import Tortoise
-from component.scheduler.tasks import traversal_queue
 from settings import schedulers
 
 # define 定义一些可以在命令行中传递的参数以及类型
@@ -20,12 +18,9 @@ if __name__ == "__main__":
         await Tortoise.init(db_url='sqlite://octopus.sqlite3', modules={'models': ['model']})
         await Tortoise.generate_schemas()
 
-
     app = Application(router, debug=options.debug)
     app.listen(port=options.port)
-    # schedulers.add_job(traversal_queue, 'interval', seconds=3)
     schedulers.start()
-    # ioloop.IOLoop.configure('tornado.platform.asyncio.AsyncIOLoop')
     loop = ioloop.IOLoop.current()
     loop.run_sync(run)
     loop.start()

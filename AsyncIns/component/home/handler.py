@@ -1,22 +1,20 @@
 from time import time
+from datetime import datetime
 import ast
 import os
-import asyncio
-from tornado.platform.asyncio import AnyThreadEventLoopPolicy
-
+from uuid import uuid4
 from tornado.web import RequestHandler
 from tornado.httpclient import HTTPError
 
-from .forms import DeployForm, SchedulerForm
+from .forms import ProjectsForm, SchedulerForm
 
 from .storage import FileStorage
-from ..common.util import authorization, finish_resp, get_scrapy_spiders, ins_subprocess
+from ..common.util import authorization, finish_resp, get_scrapy_spiders, \
+    ins_subprocess, write_resp, get_user_from_jwt
 from settings import schedulers
-from component.scheduler.tasks import traversal_queue, task
-from model import Deploy
-
-
-
+from component.scheduler.tasks import  execute_task
+from model import Projects, SchedulerRecord
+from tortoise.queryset import Q
 
 
 class IndexHandler(RequestHandler):
@@ -33,20 +31,20 @@ class IndexHandler(RequestHandler):
         print(data)
 
 
-class DeployHandler(RequestHandler):
+class ProjectsHandler(RequestHandler):
 
     def initialize(self):
         self.filestorage = FileStorage()
 
     async def get(self, *args, **kwargs):
         """  """
-        arguments = DeployForm(self.request.arguments)
+        arguments = ProjectsForm(self.request.arguments)
         if not arguments.validate():
             finish_resp(self, 400, 'field validators error')
-            return None
+            return
         order = arguments.order.data
         limit = arguments.limit.data
-        res = await arguments.filter().limit(limit).order_by(order)
+        res = await Projects.filter().limit(limit).order_by(order)
         item = dict(count=len(res))
         item['data'] = [{'id': i.id, 'project': i.project, 'spiders': i.spiders,
                          'version': i.version, 'custom': i.custom, 'spider_num': i.spider_num,
@@ -55,66 +53,72 @@ class DeployHandler(RequestHandler):
         self.finish(item)
 
     async def post(self, *args, **kwargs):
-        arguments = DeployForm(self.request.arguments)
-        # if not arguments.validate():
-        #
-        #     finish_resp(self, 400, 'field validators error')
-        #     return None
+        arguments = ProjectsForm(self.request.arguments)
+        token = self.request.headers.get('Authorization')
+        username = get_user_from_jwt(token) if token else None
         project = arguments.project.data
-        spiders = arguments.spiders.data
         ins = arguments.ins.data
+        spiders = project
+        number = 1
         eggs = self.request.files.get('eggs')
         version = round(time())
         if not all([eggs, project, version]):
             finish_resp(self, 400, 'missing parameters')
-            return None
+            return
         egg = eggs.pop()
         filename = egg['filename']
         if not filename.endswith('.egg'):
-            raise HTTPError(400, message='file is not egg')
-        file_path = await self.filestorage.put(egg['body'], project, version)
-        if ins:
-            spiders = ''
-            print(spiders)
-        else:
+            finish_resp(self, 400, 'file is not egg')
+            return
+        filename = await self.filestorage.put(egg['body'], project, version)
+        if not ins:
             env = os.environ
-            env['SCRAPY_PROJECT'] = project
-            env['SCRAPY_VERSION'] = str(version)
-            spiders = await ins_subprocess(target='component.common.runner', operation='list')
-            print(spiders)
-        await Deploy.create(project=project, spiders=spiders)
+            env['SCRAPY_PROJECT'],  env['SCRAPY_VERSION'] = project, str(version)
+            execute_result = await ins_subprocess(target='component.common.runner', operation='list')
+            gross = execute_result.split('\n')
+            pure = gross[2:]
+            spiders = ','.join(pure)
+            number = len(pure)
+        await Projects.create(project=project, spiders=spiders, version=version,
+                              ins=ins, number=number, filename=filename,
+                              creator=username,
+                              create_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        finish_resp(self, 201, {'spider': spiders, 'number': number})
+        return
 
     async def delete(self, *args, **kwargs):
-        arguments = DeployForm(self.request.arguments)
+        arguments = ProjectsForm(self.request.arguments)
         if not arguments.validate(): raise HTTPError(400, message='params is error')  # wtf validate
         project = arguments.project.data
         version = arguments.version.data
         await self.filestorage.delete(project, version)
-
-    # async def put(self, *args, **kwargs):
-    #     increase = IncreaseForm(self.request.arguments)
-    #     if not increase.validate(): raise HTTPError(400, message='params is error')  # wtf validate
-    #     id = increase.id.data
-    #     project = increase.project.data
-    #     version = increase.version.data
+        res = await Projects.filter(Q(project=project) & Q(version=version)).first().delete()
+        finish_resp(self, 204, {'project': project, 'version': version, 'delete': res})
+        return
 
 
 class SchedulerHandler(RequestHandler):
     async def post(self, *args, **kwargs):
         arguments = SchedulerForm(self.request.arguments)
         if not arguments.validate(): raise HTTPError(400, message='params is error')  # wtf validate
+        token = self.request.headers.get('Authorization')
         project = arguments.project.data
         version = arguments.version.data
         spider = arguments.spider.data
         ins = arguments.ins.data
         mode = arguments.mode.data
+        username = get_user_from_jwt(token) if token else None
+        # {'seconds': 5} {'run_date': '2019-02-13 17:05:05'} {'cron': ''}
         timer = ast.literal_eval(arguments.timer.data)
         status = arguments.status.data
-        schedulers.add_job(task, mode, trigger_args=timer,
-                           kwargs={"project": project, "spider": spider, "version": version}, )
+        job = str(uuid4())
+        if status:
+            schedulers.add_job(execute_task, mode, trigger_args=timer,
+                               kwargs={"project": project, "spider": spider, "version": version}, )
+        await SchedulerRecord.create(project=project, spider=spider, version=version,
+                                     ins=ins, mode=mode, timer=arguments.timer.data,
+                                     creator=username, status=status,
+                                     create_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
-        #
-        # async with Environment(project, spider, version) as eir:
-        #     await eir.ecs()
 
 
