@@ -22,12 +22,14 @@ class DateProtocol(asyncio.SubprocessProtocol):
 
 async def get_date():
     loop = asyncio.get_running_loop()
-    code = 'test2'
+    code = 'tests.test2'
     exit_future = asyncio.Future(loop=loop)
 
     dp = lambda: DateProtocol(exit_future)
     transport, protocol = await loop.subprocess_exec(
-        dp, sys.executable, '-m', code, 'crawl', 'baidu',
+        # dp, sys.executable, '-m', code, 'crawl', 'baidu',
+        dp, sys.executable, '-m', code, 'list',
+
         stdin=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
         stdout=asyncio.subprocess.PIPE)
@@ -37,5 +39,10 @@ async def get_date():
     data = bytes(protocol.output)
     return data.decode('ascii').rstrip()
 
-date = asyncio.run(get_date())
-print(date)
+if __name__ == '__main__':
+    # date = asyncio.run(get_date())
+    # print(date)
+    from tornado.ioloop import IOLoop
+    loop = IOLoop.current()
+    date = loop.run_sync(get_date)
+    print(date)

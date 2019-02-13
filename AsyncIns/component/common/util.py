@@ -2,6 +2,7 @@ import os
 import sys
 import hashlib
 import asyncio
+from datetime import datetime
 from random import sample
 from functools import wraps
 import jwt
@@ -81,3 +82,34 @@ def activate_egg(egg_path):
     settings_module = d.get_entry_info('scrapy', 'settings').module_name
     os.environ.setdefault('SCRAPY_SETTINGS_MODULE', settings_module)
 
+
+class InsProtocol(asyncio.SubprocessProtocol):
+    def __init__(self, exit_future):
+        self.exit_future = exit_future
+        self.output = bytearray()
+
+    def connection_made(self, transport):
+        print('start time: %s' % datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+
+    def pipe_data_received(self, fd, data):
+        self.output.extend(data)
+
+    def process_exited(self):
+        print('end time: %s' % datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        self.exit_future.set_result(True)
+
+
+async def ins_subprocess(target: str, operation: str, spider=''):
+    loop = asyncio.get_running_loop()
+    exit_future = asyncio.Future(loop=loop)
+    insp = lambda: InsProtocol(exit_future)
+    transport, protocol = await loop.subprocess_exec(
+        # insp, sys.executable, '-m', code, 'crawl', 'baidu',
+        insp, sys.executable, '-m', target, operation, spider,
+        stdin=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+        stdout=asyncio.subprocess.PIPE)
+    await exit_future
+    transport.close()
+    data = bytes(protocol.output)
+    return data.decode('ascii').rstrip()

@@ -22,15 +22,15 @@ class FileStorage(object):
             await f.write(file)
         return "{project}_{version}.egg".format(project=project, version=version)
 
-    async def delete(self, file_path):
+    def delete(self, file_path):
         remove(file_path)
 
     async def copy_to_temp(self, project, version, temp=temp_dir):
         storage_egg = self.makepath(project, version)
-        temp_egg = self.makepath((project, version, temp))
-        async with aiofiles.open(storage_egg, 'wb') as f:
+        temp_egg = self.makepath(project, version, temp)
+        async with aiofiles.open(storage_egg, 'rb') as f:
             content = await f.read()
-        async with aiofiles.open(temp_egg, 'w') as f:
+        async with aiofiles.open(temp_egg, 'wb') as f:
             await f.write(content)
         return temp_egg
 

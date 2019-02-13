@@ -1,8 +1,8 @@
+import asyncio
 from tornado.web import Application
 from tornado import ioloop
 from tornado.options import options, define
-
-from tornado.platform.asyncio import AsyncIOMainLoop
+from tornado.platform.asyncio import AnyThreadEventLoopPolicy
 
 from urls import router
 from tortoise import Tortoise
@@ -21,12 +21,11 @@ if __name__ == "__main__":
         await Tortoise.generate_schemas()
 
 
-    ioloop.IOLoop.configure('tornado.platform.asyncio.AsyncIOLoop')
-    # AsyncIOMainLoop().install()
     app = Application(router, debug=options.debug)
     app.listen(port=options.port)
     # schedulers.add_job(traversal_queue, 'interval', seconds=3)
     schedulers.start()
+    # ioloop.IOLoop.configure('tornado.platform.asyncio.AsyncIOLoop')
     loop = ioloop.IOLoop.current()
     loop.run_sync(run)
     loop.start()

@@ -1,26 +1,36 @@
 from time import time
 import ast
+import os
 import asyncio
-from tornado.platform.asyncio import AsyncIOMainLoop
+from tornado.platform.asyncio import AnyThreadEventLoopPolicy
+
 from tornado.web import RequestHandler
 from tornado.httpclient import HTTPError
 
 from .forms import DeployForm, SchedulerForm
 
 from .storage import FileStorage
-from ..common.util import authorization, finish_resp, get_scrapy_spiders
+from ..common.util import authorization, finish_resp, get_scrapy_spiders, ins_subprocess
 from settings import schedulers
 from component.scheduler.tasks import traversal_queue, task
 from model import Deploy
 
 
+
+
+
 class IndexHandler(RequestHandler):
     permission = 'observer'
 
-    @authorization
+    # @authorization
+    # async def get(self, *args, **kwargs):
+    #     sec = int(self.request.arguments.get('sec')[0])
+    #     schedulers.add_job(traversal_queue, 'interval', seconds=sec, max_instances=10)
+
     async def get(self, *args, **kwargs):
-        sec = int(self.request.arguments.get('sec')[0])
-        schedulers.add_job(traversal_queue, 'interval', seconds=sec, max_instances=10)
+        print('this is index handler')
+        data = await ins_subprocess(target='tests.test2', operation='list', spider='baidu')
+        print(data)
 
 
 class DeployHandler(RequestHandler):
@@ -67,10 +77,12 @@ class DeployHandler(RequestHandler):
             spiders = ''
             print(spiders)
         else:
-            spiders = asyncio.run(get_scrapy_spiders(project, version))
+            env = os.environ
+            env['SCRAPY_PROJECT'] = project
+            env['SCRAPY_VERSION'] = str(version)
+            spiders = await ins_subprocess(target='component.common.runner', operation='list')
             print(spiders)
-        await Deploy.create(project=project, spiders=spiders,
-                               ins=ins, version=version, egg_path=file_path)
+        await Deploy.create(project=project, spiders=spiders)
 
     async def delete(self, *args, **kwargs):
         arguments = DeployForm(self.request.arguments)

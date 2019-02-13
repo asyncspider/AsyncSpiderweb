@@ -6,8 +6,7 @@ from contextlib import contextmanager
 
 from scrapyd import get_application
 from scrapyd.interfaces import IEggStorage
-from scrapyd.eggutils import activate_egg
-
+from ..common.util import activate_egg
 
 import importlib
 from datetime import datetime
@@ -29,7 +28,7 @@ class Environment(object):
         self.file_path = self.storage.makepath(self.project, self.version)
 
     async def __aenter__(self):
-        self.temp_egg = self.storage.copy_to_temp(self.project, self.version)
+        self.temp_egg = await self.storage.copy_to_temp(self.project, self.version)
         activate_egg(self.temp_egg)
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
@@ -37,7 +36,7 @@ class Environment(object):
             self.storage.delete(self.temp_egg)
 
 
-def main():
+async def main():
     project, version = os.environ['SCRAPY_PROJECT'], os.environ['SCRAPY_VERSION']
     async with Environment(project, version):
         from scrapy.cmdline import execute
@@ -45,4 +44,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    loop = ioloop.IOLoop.instance()
+    loop.run_sync(main)
