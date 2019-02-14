@@ -14,10 +14,11 @@ from settings import schedulers
 # define 定义一些可以在命令行中传递的参数以及类型
 define('port', default=8000, help='run on the given port', type=int)
 define('debug', default=True, help='set tornado debug mode', type=bool)
-options.log_file_prefix = path.join(path.dirname(__file__), 'logs/tornado.log')  # logs path
+options.log_file_prefix = path.join(path.dirname(__file__), 'logs/tornados/tornado.log')  # logs path
 options.log_rotate_mode = 'time'   # logging mode - rotate: time or size
 options.log_rotate_when = 'D'      # logging unit: S / M / H / D / W0 - W6
 options.log_rotate_interval = 60   # logging interval: 60 seconds
+options.logging = 'warning'  # logging level: debug info warning error
 options.parse_command_line()
 
 

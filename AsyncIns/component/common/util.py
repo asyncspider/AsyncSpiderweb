@@ -2,12 +2,14 @@ import os
 import sys
 import hashlib
 import asyncio
+import argparse
 from datetime import datetime
 from random import sample
 from functools import wraps
 import jwt
 import pkg_resources
 from asyncio.subprocess import PIPE
+from uuid import uuid1
 
 from tortoise.queryset import Q
 from settings import secret, expire
@@ -65,17 +67,19 @@ def write_resp(self, status: int, message: str):
     return None
 
 
-async def get_scrapy_spiders(project, version):
-    """ get spider list in egg """
-    env = os.environ.copy()
-    env['PYTHONIOENCODING'] = 'UTF-8'
-    env['SCRAPY_PROJECT'] = project
-    env['SCRAPY_VERSION'] = version
+async def get_spiders(project: str, version: str):
+    """
+    get spider list in scrapy egg
+    """
+    job = str(uuid1())
     process_obj = await asyncio.create_subprocess_exec(
-        sys.executable, '-m', 'runner', 'list', stdout=PIPE, stderr=PIPE)
-    stdout, stderr = await process_obj.communicate()  # Wait for the subprocess exit and read one line of output.
-    spiders = stdout.decode(stdout).rstrip()
-    return "".join(spiders)
+        sys.executable, '-m', 'component.common.runner', 'list',
+        project, version, job,
+        stdout=PIPE, stderr=PIPE)
+    # Wait for the subprocess exit and read one line of output.
+    stdout, stderr = await process_obj.communicate()
+    spiders = stdout.decode().rstrip().split('\n')
+    return spiders
 
 
 def activate_egg(egg_path):
@@ -125,18 +129,32 @@ class InsProtocol(asyncio.SubprocessProtocol):
         self.exit_future.set_result(True)
 
 
-async def ins_subprocess(target: str, operation: str, spider=''):
+async def ins_subprocess(target: str, operation: str, *args, **kwargs):
+    """
+    subprocess generated according to protocol settings execute specified files
+    :param target: executable python file
+    :param operation: crawl or list
+    :param spider: if operation is crawl, need to pass the spider name
+    :return: a list, including runtime/stdout/stderr
+    """
+    # project = kwargs.get('project')
+    # spider = kwargs.get('spider')
+    # version = kwargs.get('version')
+    # job = kwargs.get('job')
+    # if all([project, version, job]):
+    spider, project, version, job = args[-4:]
     loop = asyncio.get_running_loop()
     exit_future = asyncio.Future(loop=loop)
     insp = lambda: InsProtocol(exit_future)
     transport, protocol = await loop.subprocess_exec(
-        # insp, sys.executable, '-m', code, 'crawl', 'baidu',
         insp, sys.executable, '-m', target, operation, spider,
+        project, version, job,
         stdin=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
         stdout=asyncio.subprocess.PIPE)
     await exit_future
     transport.close()
+    dps = protocol.output
     std = bytes(protocol.output).decode('ascii').rstrip()
     period = timedelta_format(protocol.end - protocol.start)
     return [protocol.start.strftime('%Y-%m-%d %H:%M:%S'),

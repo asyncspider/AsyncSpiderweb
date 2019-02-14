@@ -15,13 +15,11 @@ except ImportError:
     raise ImportError('TornadoScheduler requires tornado installed')
 
 
-class CustomBaseScheduler(BaseScheduler):
-
+class InsBaseScheduler(BaseScheduler):
     def add_job(self, func, trigger=None, trigger_args=None, args=None, kwargs=None, id=None, name=None,
                 misfire_grace_time=undefined, coalesce=undefined, max_instances=undefined,
                 next_run_time=undefined, jobstore='default', executor='default',
                 replace_existing=False):
-
         """
         :param trigger_args: dict
         """
@@ -61,7 +59,7 @@ def run_in_ioloop(func):
     return wrapper
 
 
-class TornadoScheduler(CustomBaseScheduler):
+class TornadoScheduler(InsBaseScheduler):
     """
     A scheduler that runs on a Tornado IOLoop.
 

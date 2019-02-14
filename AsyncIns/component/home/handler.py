@@ -10,10 +10,9 @@ from tornado.httpclient import HTTPError
 from .forms import ProjectsForm, SchedulersForm
 
 from .storage import FileStorage
-from ..common.util import authorization, finish_resp, get_scrapy_spiders, \
-    ins_subprocess, write_resp, get_user_from_jwt
+from ..common.util import *
 from settings import schedulers
-from component.scheduler.tasks import  execute_task
+from component.scheduler.tasks import execute_task
 from model import Projects, Schedulers
 from tortoise.queryset import Q
 
@@ -28,8 +27,13 @@ class IndexHandler(RequestHandler):
 
     async def get(self, *args, **kwargs):
         print('this is index handler')
-        data = await ins_subprocess(target='tests.test2', operation='list', spider='baidu')
-        print(data)
+        # target='tests.test2'
+        data = await get_spiders('arts', '1550036771')
+        # data = await ins_subprocess('component.common.runner', 'list',
+        #                             project='arts', spider='baidu', version='1550036771',
+        #                             job=str(uuid1())
+        #                             )
+        logging.warning(data)
 
 
 class ProjectsHandler(RequestHandler):
@@ -62,7 +66,7 @@ class ProjectsHandler(RequestHandler):
         spiders = project
         number = 1
         eggs = self.request.files.get('eggs')
-        version = round(time())
+        version = str(round(time()))
         if not all([eggs, project, version]):
             finish_resp(self, 400, 'missing parameters')
             return
@@ -73,13 +77,9 @@ class ProjectsHandler(RequestHandler):
             return
         filename = await self.filestorage.put(egg['body'], project, version)
         if not ins:
-            env = os.environ
-            env['SCRAPY_PROJECT'],  env['SCRAPY_VERSION'] = project, str(version)
-            execute_result = await ins_subprocess(target='component.common.runner', operation='list')
-            gross = execute_result.split('\n')
-            pure = gross[2:]
-            spiders = ','.join(pure)
-            number = len(pure)
+            gross = await get_spiders(project, version)
+            spiders = ','.join(gross)
+            number = len(gross)
         await Projects.create(project=project, spiders=spiders, version=version,
                               ins=ins, number=number, filename=filename,
                               creator=username,
@@ -133,7 +133,8 @@ class SchedulersHandler(RequestHandler):
         ins = arguments.ins.data
         mode = arguments.mode.data
         username = get_user_from_jwt(token) if token else None
-        # {'seconds': 5} {'run_date': '2019-02-13 17:05:05'} {'cron': ''}
+        # {'seconds': 5} {'run_date': '2019-02-13 17:05:05'}
+        # {'day_of_week': 'mon-fri', 'hour': 5, 'minute': 30, 'end_date': '2014-05-30'}
         timer = ast.literal_eval(arguments.timer.data)
         status = arguments.status.data
         jid = str(uuid1())  # scheduler job id,can remove job
@@ -155,21 +156,35 @@ class SchedulersHandler(RequestHandler):
         username = get_user_from_jwt(token) if token else None
         status = arguments.status.data
         query = await Schedulers.filter(id=sid).first()
-        if query.status and not status:
-            # cancel task according to status
+        if query.status and not status:  # cancel task according to status
             try:
                 schedulers.remove_job(query.jid)
             except Exception as error:
                 logging.error(error)
-
-        if status and not query.status:
-            # add task according to status
+        if status and not query.status:  # add task according to status
             schedulers.add_job(execute_task, mode, trigger_args=timer, id=query.jid,
                                args=[query.project, query.spider, version, mode, timer, username, status])
-        await Schedulers.filter(id=sid).update(version=version, mode=mode, timer=arguments.timer.data,
+        await Schedulers.filter(id=sid).update(mode=mode, timer=arguments.timer.data,
                                                creator=username, status=status)
 
 
-
+class RecordsHandler(RequestHandler):
+    async def get(self, *args, **kwargs):
+        arguments = SchedulersForm(self.request.arguments)
+        # if not arguments.validate():
+        #     finish_resp(self, 400, 'field validators error')
+        #     return
+        order = arguments.order.data
+        limit = arguments.limit.data
+        res = await Schedulers.filter().limit(limit).order_by(order)
+        item = dict(count=len(res))
+        item['data'] = [{'id': i.id, 'project': i.project, 'spider': i.spider,
+                         'version': i.version, 'ins': i.ins, 'job': i.job,
+                         'mode': i.mode, 'timer': i.timer, 'status': i.status,
+                         'start': i.start, 'end': i.end, 'period': i.period,
+                         'creator': i.creator,
+                         'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
+                        for i in res]
+        self.finish(item)
 
 

@@ -23,7 +23,7 @@ class ProjectsForm(Form):
 class SchedulersForm(Form):
     id = IntegerField('id', validators=[Regexp(regex=re.compile(('\d+')))])
     project = StringField("project name", validators=[Length(max=160, message="Field Length Cannot Pass Validation")])
-    version = IntegerField("version")
+    version = StringField("version")
     spider = StringField("spider name")
     ins = BooleanField('asyncins or scrapy. True is asyncins')
     mode = StringField('mode', validators=[AnyOf(values=('date', 'interval', 'cron'), message='mode error')])

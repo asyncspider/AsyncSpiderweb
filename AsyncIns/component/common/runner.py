@@ -11,6 +11,7 @@ from ..common.util import activate_egg
 import importlib
 from datetime import datetime
 import aiofiles
+import argparse
 from tornado import ioloop
 from tornado.gen import coroutine
 from tornado.concurrent import run_on_executor
@@ -29,7 +30,9 @@ class Environment(object):
         self.file_path = self.storage.makepath(self.project, self.version)
 
     async def __aenter__(self):
-        self.temp_egg = await self.storage.copy_to_temp(self.project, self.version, self.job)
+        self.temp_egg = await self.storage.copy_to_temp(project=self.project,
+                                                        version=self.version,
+                                                        job=self.job)
         activate_egg(self.temp_egg)
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
@@ -38,7 +41,8 @@ class Environment(object):
 
 
 async def main():
-    project, version, job = os.environ['SCRAPY_PROJECT'], os.environ['SCRAPY_VERSION'], os.environ['SCRAPY_JOB']
+    project, version, job = sys.argv[-3:]
+    sys.argv = sys.argv[:3]
     async with Environment(project, version, job):
         from scrapy.cmdline import execute
         execute()

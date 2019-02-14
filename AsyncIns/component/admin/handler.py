@@ -1,8 +1,6 @@
 from datetime import datetime
 from tornado.web import RequestHandler
-
 import jwt
-from tornado.httpclient import HTTPError
 from tortoise.queryset import Q
 from model import User
 from .forms import *
