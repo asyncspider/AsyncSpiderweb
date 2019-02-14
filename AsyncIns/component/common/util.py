@@ -2,7 +2,7 @@ import os
 import sys
 import hashlib
 import asyncio
-import argparse
+import logging
 from datetime import datetime
 from random import sample
 from functools import wraps
@@ -56,12 +56,12 @@ def authorization(func):
     return wrapper
 
 
-def finish_resp(self, status: int, message: str):
+def finishes(self, status: int, message: str):
     self.set_status(status)
     self.finish(message)
 
 
-def write_resp(self, status: int, message: str):
+def writes(self, status: int, message: str):
     self.set_status(status)
     self.write(message)
     return None
@@ -111,6 +111,22 @@ def timedelta_format(period):
         day=int(day), hour=int(hour), minute=int(minute), second=round(second, 2))
 
 
+def prep_params(arguments: dict):
+    """Processing the received parameters
+    :return: tuple
+    """
+    params = {}
+    for i in arguments.data.keys():
+        if arguments[i].raw_data:
+            params[i] = arguments[i].raw_data[0]
+        elif arguments[i].default:
+            params[i] = arguments[i].default
+    ordering = params.pop('ordering')
+    limit = params.pop('limit')
+    offset = params.pop('offset')
+    return params, offset, limit, ordering
+
+
 class InsProtocol(asyncio.SubprocessProtocol):
     def __init__(self, exit_future):
         self.exit_future = exit_future
@@ -130,18 +146,11 @@ class InsProtocol(asyncio.SubprocessProtocol):
 
 
 async def ins_subprocess(target: str, operation: str, *args, **kwargs):
-    """
-    subprocess generated according to protocol settings execute specified files
+    """subprocess generated according to protocol settings execute specified files
     :param target: executable python file
     :param operation: crawl or list
-    :param spider: if operation is crawl, need to pass the spider name
     :return: a list, including runtime/stdout/stderr
     """
-    # project = kwargs.get('project')
-    # spider = kwargs.get('spider')
-    # version = kwargs.get('version')
-    # job = kwargs.get('job')
-    # if all([project, version, job]):
     spider, project, version, job = args[-4:]
     loop = asyncio.get_running_loop()
     exit_future = asyncio.Future(loop=loop)
@@ -154,10 +163,10 @@ async def ins_subprocess(target: str, operation: str, *args, **kwargs):
         stdout=asyncio.subprocess.PIPE)
     await exit_future
     transport.close()
-    dps = protocol.output
     std = bytes(protocol.output).decode('ascii').rstrip()
     period = timedelta_format(protocol.end - protocol.start)
     return [protocol.start.strftime('%Y-%m-%d %H:%M:%S'),
             protocol.end.strftime('%Y-%m-%d %H:%M:%S'),
             period, std]
+
 

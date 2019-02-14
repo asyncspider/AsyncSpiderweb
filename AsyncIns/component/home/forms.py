@@ -29,12 +29,11 @@ class SchedulersForm(Form):
     mode = StringField('mode', validators=[AnyOf(values=('date', 'interval', 'cron'), message='mode error')])
     timer = StringField()
     status = BooleanField('status')
+    offset = IntegerField('offset')
     limit = IntegerField('limit', default=default_page, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
-    order = StringField('order', default='id',
-                        validators=[AnyOf(values=["id", "-id", "spider_num",
-                                                  "-spider_num", "create_time", "-create_time"],
-                                          message='order value not')])
-    filters = StringField('filter', '', )
-
+    ordering = StringField('order', default='id',
+                           validators=[AnyOf(values=["id", "-id", "number",
+                                       "-number", "create_time", "-create_time"],
+                                             message='order value not')])
 
 

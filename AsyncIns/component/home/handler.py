@@ -1,19 +1,13 @@
 from time import time
-from datetime import datetime
 import ast
-import os
-import logging
-from uuid import uuid1
 from tornado.web import RequestHandler
-from tornado.httpclient import HTTPError
 
 from .forms import ProjectsForm, SchedulersForm
-
 from .storage import FileStorage
 from ..common.util import *
 from settings import schedulers
 from component.scheduler.tasks import execute_task
-from model import Projects, Schedulers
+from model import Projects, Schedulers, Records
 from tortoise.queryset import Q
 
 
@@ -27,12 +21,7 @@ class IndexHandler(RequestHandler):
 
     async def get(self, *args, **kwargs):
         print('this is index handler')
-        # target='tests.test2'
         data = await get_spiders('arts', '1550036771')
-        # data = await ins_subprocess('component.common.runner', 'list',
-        #                             project='arts', spider='baidu', version='1550036771',
-        #                             job=str(uuid1())
-        #                             )
         logging.warning(data)
 
 
@@ -42,19 +31,14 @@ class ProjectsHandler(RequestHandler):
         self.filestorage = FileStorage()
 
     async def get(self, *args, **kwargs):
-        """  """
         arguments = ProjectsForm(self.request.arguments)
-        if not arguments.validate():
-            finish_resp(self, 400, 'field validators error')
-            return
-        order = arguments.order.data
-        limit = arguments.limit.data
-        res = await Projects.filter().limit(limit).order_by(order)
-        item = dict(count=len(res))
+        params, offset, limit, ordering = prep_params(arguments)
+        query = await Projects.filter(**params).offset(offset).limit(limit).order_by(ordering)
+        item = dict(count=len(query))
         item['data'] = [{'id': i.id, 'project': i.project, 'spiders': i.spiders,
                          'version': i.version, 'custom': i.custom, 'spider_num': i.spider_num,
                          'egg': i.egg_path, 'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
-                        for i in res]
+                        for i in query]
         self.finish(item)
 
     async def post(self, *args, **kwargs):
@@ -68,12 +52,12 @@ class ProjectsHandler(RequestHandler):
         eggs = self.request.files.get('eggs')
         version = str(round(time()))
         if not all([eggs, project, version]):
-            finish_resp(self, 400, 'missing parameters')
+            finishes(self, 400, 'missing parameters')
             return
         egg = eggs.pop()
         filename = egg['filename']
         if not filename.endswith('.egg'):
-            finish_resp(self, 400, 'file is not egg')
+            finishes(self, 400, 'file is not egg')
             return
         filename = await self.filestorage.put(egg['body'], project, version)
         if not ins:
@@ -84,44 +68,31 @@ class ProjectsHandler(RequestHandler):
                               ins=ins, number=number, filename=filename,
                               creator=username,
                               create_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        finish_resp(self, 201, {'spider': spiders, 'number': number})
-        return
+        finishes(self, 201, {'spider': spiders, 'number': number})
 
     async def delete(self, *args, **kwargs):
         arguments = ProjectsForm(self.request.arguments)
-        if not arguments.validate(): raise HTTPError(400, message='params is error')  # wtf validate
+        sid = arguments.id.data
         project = arguments.project.data
         version = arguments.version.data
+        await Projects.filter(id=sid).delete()
         await self.filestorage.delete(project, version)
-        res = await Projects.filter(Q(project=project) & Q(version=version)).first().delete()
-        finish_resp(self, 204, {'project': project, 'version': version, 'delete': res})
-        return
+        finishes(self, 204, {'project': project, 'version': version})
 
 
 class SchedulersHandler(RequestHandler):
 
     async def get(self, *args, **kwargs):
         arguments = SchedulersForm(self.request.arguments)
-        # if not arguments.validate():
-        #     finish_resp(self, 400, 'field validators error')
-        #     return
-        order = arguments.order.data
-        limit = arguments.limit.data
-        res = await Schedulers.filter().limit(limit).order_by(order)
-        item = dict(count=len(res))
+        params, offset, limit, ordering = prep_params(arguments)
+        query = await Schedulers.filter(**params).offse(offset).limit(limit).order_by(ordering)
+        item = dict(count=len(query))
         item['data'] = [{'id': i.id, 'project': i.project, 'spider': i.spider,
                          'version': i.version, 'ins': i.ins, 'job': i.job,
                          'mode': i.mode, 'timer': i.timer, 'status': i.status,
                          'creator': i.creator,
                          'create_time': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
-                        for i in res]
-        # item['data'] = [{'id': i.id, 'project': i.project, 'spider': i.spider,
-        #                  'version': i.version, 'ins': i.ins, 'job': i.job,
-        #                  'mode': i.mode, 'timer': i.timer, 'status': i.status,
-        #                  'start': i.start, 'end': i.end, 'period': i.period,
-        #                  'creator': i.creator,
-        #                  'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
-        #                 for i in res]
+                        for i in query]
         self.finish(item)
 
     async def post(self, *args, **kwargs):
@@ -171,20 +142,16 @@ class SchedulersHandler(RequestHandler):
 class RecordsHandler(RequestHandler):
     async def get(self, *args, **kwargs):
         arguments = SchedulersForm(self.request.arguments)
-        # if not arguments.validate():
-        #     finish_resp(self, 400, 'field validators error')
-        #     return
-        order = arguments.order.data
-        limit = arguments.limit.data
-        res = await Schedulers.filter().limit(limit).order_by(order)
-        item = dict(count=len(res))
+        params, offset, limit, ordering = prep_params(arguments)
+        query = await Records.filter(**params).offset(offset).limit(limit).order_by(ordering)
+        item = dict(count=len(query))
         item['data'] = [{'id': i.id, 'project': i.project, 'spider': i.spider,
                          'version': i.version, 'ins': i.ins, 'job': i.job,
                          'mode': i.mode, 'timer': i.timer, 'status': i.status,
                          'start': i.start, 'end': i.end, 'period': i.period,
                          'creator': i.creator,
                          'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
-                        for i in res]
+                        for i in query]
         self.finish(item)
 
 

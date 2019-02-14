@@ -12,18 +12,16 @@ class UserForm(Form):
     password = StringField()
     status = BooleanField()
     email = StringField()
-    remark = StringField()
     role = StringField('user role',
                        validators=[AnyOf(values=('observer', 'developer', 'superuser'),
                                          message='user role error')])
-    limit = IntegerField('limit', default=default_page,
-                         validators=[NumberRange(min=1, max=100,
-                                                 message='limit 1-100')])
-    order = StringField('order', default='id',
-                        validators=[AnyOf(values=["id", "-id", "status",
-                                                  "-status", "create_time", "-create_time"],
-                                          message='order value not')])
-    filter = StringField('filter', '', )
+    offset = IntegerField('offset', default=1)
+    limit = IntegerField('limit', default=default_page, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
+    ordering = StringField('order', default='id',
+                           validators=[AnyOf(values=["id", "-id", "username",
+                                                     "-username", "status",  "-status",
+                                                     "create_time", "-create_time"],
+                                             message='order value not')])
 
 
 class LoginForm(Form):

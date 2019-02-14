@@ -85,7 +85,6 @@ class User(Model):
     verify = BooleanField(default=False)
     code = CharField(max_length=6)
     role = CharField(max_length=10)
-    remark = CharField(max_length=64)
     create_time = DatetimeField(null=True)
 
     def __str__(self):
