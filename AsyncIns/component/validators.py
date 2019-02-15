@@ -3,7 +3,7 @@ from wtforms_tornado import Form
 from wtforms.fields import *
 from wtforms.validators import *
 
-from settings import default_page
+from settings import DEFAULT_PAGE, DEFAULT_OFFSET
 
 
 class ProjectsForm(Form):
@@ -12,8 +12,8 @@ class ProjectsForm(Form):
     version = StringField("version", validators=[Length(max=13, message='version is too long')])
     spiders = StringField("spider name list", validators=[Length(max=60, message="spider name is too long")])
     ins = BooleanField("is it scrapy")
-    offset = IntegerField('offset', default=999)
-    limit = IntegerField('limit', default=default_page, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
+    offset = IntegerField('offset', default=DEFAULT_OFFSET)
+    limit = IntegerField('limit', default=DEFAULT_PAGE, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
     ordering = StringField('order', default='id',
                            validators=[AnyOf(values=["id", "-id", "number",
                                                      "-number", "create_time", "-create_time"],
@@ -30,10 +30,49 @@ class SchedulersForm(Form):
     timer = StringField()
     status = BooleanField('status')
     offset = IntegerField('offset')
-    limit = IntegerField('limit', default=default_page, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
+    limit = IntegerField('limit', default=DEFAULT_PAGE, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
     ordering = StringField('order', default='id',
                            validators=[AnyOf(values=["id", "-id", "number",
                                        "-number", "create_time", "-create_time"],
                                              message='order value not')])
 
 
+class RecordsForm(Form):
+    pass
+
+
+class UserForm(Form):
+    id = IntegerField()
+    username = StringField()
+    password = StringField()
+    status = BooleanField()
+    email = StringField()
+    # role = StringField('user role',
+    #                    validators=[AnyOf(values=('observer', 'developer', 'superuser'),
+    #                                      message='user role error')])
+    offset = IntegerField('offset', default=999)
+    limit = IntegerField('limit', default=DEFAULT_PAGE, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
+    ordering = StringField('order', default='id',
+                           validators=[AnyOf(values=["id", "-id", "username",
+                                                     "-username", "status",  "-status",
+                                                     "create_time", "-create_time"],
+                                             message='order value not')])
+
+
+class LoginForm(Form):
+    id = IntegerField()
+    username = StringField()
+    password = StringField('password')
+    email = StringField()
+    status = StringField()
+    code = StringField('verify code')
+
+
+class RegisterForm(Form):
+    pass
+
+
+class RoleForm(Form):
+    id = IntegerField()
+    name = StringField()
+    permissions = StringField()

@@ -1,27 +1,23 @@
 import six
 from functools import wraps
-from apscheduler.util import maybe_ref
 from datetime import timedelta
 
+from tornado.ioloop import IOLoop
+from apscheduler.util import maybe_ref
+from apscheduler.job import Job
 from apscheduler.schedulers.base import BaseScheduler
 from apscheduler.schedulers.tornado import TornadoScheduler
 from apscheduler.util import undefined
-from apscheduler.job import Job
 from apscheduler.schedulers.base import STATE_STOPPED
 
-try:
-    from tornado.ioloop import IOLoop
-except ImportError:
-    raise ImportError('TornadoScheduler requires tornado installed')
 
-
-class InsBaseScheduler(BaseScheduler):
+class CustomBaseScheduler(BaseScheduler):
     def add_job(self, func, trigger=None, trigger_args=None, args=None, kwargs=None, id=None, name=None,
                 misfire_grace_time=undefined, coalesce=undefined, max_instances=undefined,
                 next_run_time=undefined, jobstore='default', executor='default',
                 replace_existing=False):
         """
-        :param trigger_args: dict
+        :param: dict trigger_args
         """
         job_kwargs = {
             'trigger': self._create_trigger(trigger, trigger_args),
@@ -59,7 +55,7 @@ def run_in_ioloop(func):
     return wrapper
 
 
-class TornadoScheduler(InsBaseScheduler):
+class TornadoScheduler(CustomBaseScheduler):
     """
     A scheduler that runs on a Tornado IOLoop.
 

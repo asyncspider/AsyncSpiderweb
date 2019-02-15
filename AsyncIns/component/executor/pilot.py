@@ -1,7 +1,6 @@
 import sys
-import importlib
 from tornado import ioloop
-from component.home.storage import FileStorage
+from ..parts import FileStorage, activate_egg
 
 
 class Environment(object):
@@ -17,7 +16,8 @@ class Environment(object):
         self.temp_egg = await self.storage.copy_to_temp(project=self.project,
                                                         version=self.version,
                                                         job=self.job)
-        sys.path.append(self.temp_egg)
+
+        activate_egg(self.temp_egg)
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
         if self.temp_egg:
@@ -28,8 +28,8 @@ async def main():
     project, version, job = sys.argv[-3:]
     sys.argv = sys.argv[:3]
     async with Environment(project, version, job):
-        module = importlib.import_module('hello')
-        module.run()
+        from scrapy.cmdline import execute
+        execute()
 
 
 if __name__ == '__main__':

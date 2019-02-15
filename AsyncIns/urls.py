@@ -1,6 +1,8 @@
 from tornado.web import URLSpec
-from component.home.handler import IndexHandler, ProjectsHandler, SchedulersHandler, RecordsHandler
-from component.admin.handler import LoginHandler, RegisterHandler, UserHandler
+
+from component.handlers import IndexHandler, ProjectsHandler, SchedulersHandler, RecordsHandler, \
+    LoginHandler, RegisterHandler, UserHandler
+
 
 router = [
     URLSpec('/api/v1/?', IndexHandler, name='index'),

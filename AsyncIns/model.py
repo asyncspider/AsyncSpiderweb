@@ -1,10 +1,9 @@
-import datetime
 from tortoise.models import Model
 from tortoise.fields import *
 
 
 class Projects(Model):
-    """ 项目模型 """
+    """ project model """
     id = IntField(pk=True)
     project = CharField(max_length=100,  comments="project name")
     version = CharField(max_length=13, null=True, comments="egg version")
@@ -20,7 +19,7 @@ class Projects(Model):
 
 
 class Schedulers(Model):
-    """ 调度记录模型 """
+    """ scheduler model """
     id = IntField(pk=True)
     jid = CharField(max_length=64, comments='scheduler job id')
     project = CharField(max_length=160, null=True, comments="project name")
@@ -39,7 +38,7 @@ class Schedulers(Model):
 
 
 class Records(Model):
-    """ 运行记录模型 """
+    """ run record model """
     id = IntField(pk=True)
     project = CharField(max_length=160, null=True, comments="project name")
     spider = CharField(max_length=160, null=True, comments="spider name")
@@ -59,24 +58,8 @@ class Records(Model):
         return self.spider
 
 
-class JobStore(Model):
-    """ name of task/mode of task/function name/time rule/is it enable/ """
-    id = IntField(pk=True)
-    job = CharField(max_length=160, comments="job name")
-    project = CharField(max_length=160, comments="project name")
-    version = CharField(max_length=13, null=True, comments="egg version")
-    spider = CharField(max_length=160, null=True, comments="spider name")
-    mode = IntField(default=0, comments='timer mode,o is interval,1 is cron, 2 is date')
-    timer = CharField(max_length=255, comments='time rule or time value')
-    status = BooleanField(default=True, comments='is it enable, True is enable, False is disable')
-    creator = ForeignKeyField('models.User', related_name='creator', comments='the job creator')
-    create_time = DatetimeField(null=True)
-
-    def __str__(self):
-        return self.job
-
-
 class User(Model):
+    """ user model """
     id = IntField(pk=True)
     username = CharField(max_length=64)
     password = CharField(max_length=64)
@@ -92,6 +75,7 @@ class User(Model):
 
 
 class Verify(Model):
+    """ verify code model """
     id = IntField(pk=True)
     email = CharField(max_length=100)
     code = CharField(max_length=6)

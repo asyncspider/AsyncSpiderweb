@@ -1,18 +1,19 @@
 import os
-from uuid import uuid1
 from datetime import datetime
+from uuid import uuid1
+
 import aiofiles
-from ..common.util import ins_subprocess
+from ..parts import async_subprocess
 from model import Records
-from settings import spider_log_path
+from settings import SPIDER_LOG_DIR
 
 
 async def execute_task(*args, **kwargs):
     project, spider, version, ins, mode, timer, username, status = args
     job = str(uuid1())
-    start, end, period, std = await ins_subprocess('component.common.runner', 'crawl',
-                                                   spider, project, version, job)
-    spider_log = os.path.join(spider_log_path, '{job}.log'.format(job=job))
+    start, end, period, std = await async_subprocess('executor.pilot', 'crawl',
+                                                     spider, project, version, job)
+    spider_log = os.path.join(SPIDER_LOG_DIR, '{job}.log'.format(job=job))
     async with aiofiles.open(spider_log, 'w') as f:
         await f.write(std)
     await Records.create(project=project, spider=spider, version=version,

@@ -19,11 +19,11 @@ async def runner():
     p.set_exit_callback(ends(out, err))
 
 
-
 def ends(std, out, err):
     print(std)
     print('end time:')
     print(datetime.now())
+
 
 if __name__ == '__main__':
     loop = ioloop.IOLoop.current()
