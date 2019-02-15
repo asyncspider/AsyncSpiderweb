@@ -20,7 +20,6 @@ options.parse_command_line()
 
 if __name__ == "__main__":
     async def run():
-
         await Tortoise.init(db_url='sqlite://AsyncIns.sqlite3', modules={'models': ['model']})
         await Tortoise.generate_schemas()
 
@@ -28,7 +27,6 @@ if __name__ == "__main__":
     app.listen(port=options.port)
     schedulers.start()
     loop = ioloop.IOLoop.current()
-
     loop.run_sync(run)
     loop.start()
 

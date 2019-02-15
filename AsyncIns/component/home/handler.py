@@ -8,10 +8,10 @@ from ..common.util import *
 from settings import schedulers
 from component.scheduler.tasks import execute_task
 from model import Projects, Schedulers, Records
-from tortoise.queryset import Q
+from ..common.handler import RestfulHandler
 
 
-class IndexHandler(RequestHandler):
+class IndexHandler(RestfulHandler):
     permission = 'observer'
 
     # @authorization
@@ -25,24 +25,27 @@ class IndexHandler(RequestHandler):
         logging.warning(data)
 
 
-class ProjectsHandler(RequestHandler):
+class ProjectsHandler(RestfulHandler):
 
-    def initialize(self):
-        self.filestorage = FileStorage()
+    storage = FileStorage()
 
     async def get(self, *args, **kwargs):
         arguments = ProjectsForm(self.request.arguments)
-        params, offset, limit, ordering = prep_params(arguments)
+        if not arguments.validate():
+            return self.interrupt(400, 'failure of params validator')
+        params, offset, limit, ordering = prep(arguments)
         query = await Projects.filter(**params).offset(offset).limit(limit).order_by(ordering)
-        item = dict(count=len(query))
-        item['data'] = [{'id': i.id, 'project': i.project, 'spiders': i.spiders,
-                         'version': i.version, 'custom': i.custom, 'spider_num': i.spider_num,
-                         'egg': i.egg_path, 'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
-                        for i in query]
-        self.finish(item)
+        response = dict(count=len(query))
+        response['data'] = [{'id': i.id, 'project': i.project, 'spiders': i.spiders,
+                            'version': i.version, 'custom': i.custom, 'spider_num': i.spider_num,
+                            'egg': i.egg_path, 'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
+                            for i in query]
+        self.finish(response)
 
     async def post(self, *args, **kwargs):
         arguments = ProjectsForm(self.request.arguments)
+        if not arguments.validate():
+            return self.interrupt(400, 'failure of params validator')
         token = self.request.headers.get('Authorization')
         username = get_user_from_jwt(token) if token else None
         project = arguments.project.data
@@ -52,14 +55,12 @@ class ProjectsHandler(RequestHandler):
         eggs = self.request.files.get('eggs')
         version = str(round(time()))
         if not all([eggs, project, version]):
-            finishes(self, 400, 'missing parameters')
-            return
+            return self.interrupt(400, 'missing parameters')
         egg = eggs.pop()
         filename = egg['filename']
         if not filename.endswith('.egg'):
-            finishes(self, 400, 'file is not egg')
-            return
-        filename = await self.filestorage.put(egg['body'], project, version)
+            return self.interrupt(400, 'file is not egg')
+        filename = await self.storage.put(egg['body'], project, version)
         if not ins:
             gross = await get_spiders(project, version)
             spiders = ','.join(gross)
@@ -68,35 +69,41 @@ class ProjectsHandler(RequestHandler):
                               ins=ins, number=number, filename=filename,
                               creator=username,
                               create_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        finishes(self, 201, {'spider': spiders, 'number': number})
+        self.over(201, {'spider': spiders, 'number': number})
 
     async def delete(self, *args, **kwargs):
         arguments = ProjectsForm(self.request.arguments)
+        if not arguments.validate():
+            return self.interrupt(400, 'failure of params validator')
         sid = arguments.id.data
         project = arguments.project.data
         version = arguments.version.data
         await Projects.filter(id=sid).delete()
-        await self.filestorage.delete(project, version)
-        finishes(self, 204, {'project': project, 'version': version})
+        await self.storage.delete(project, version)
+        self.over(204, {'project': project, 'version': version})
 
 
-class SchedulersHandler(RequestHandler):
+class SchedulersHandler(RestfulHandler):
 
     async def get(self, *args, **kwargs):
         arguments = SchedulersForm(self.request.arguments)
-        params, offset, limit, ordering = prep_params(arguments)
+        if not arguments.validate():
+            return self.interrupt(400, 'failure of params validator')
+        params, offset, limit, ordering = prep(arguments)
         query = await Schedulers.filter(**params).offse(offset).limit(limit).order_by(ordering)
-        item = dict(count=len(query))
-        item['data'] = [{'id': i.id, 'project': i.project, 'spider': i.spider,
-                         'version': i.version, 'ins': i.ins, 'job': i.job,
-                         'mode': i.mode, 'timer': i.timer, 'status': i.status,
-                         'creator': i.creator,
-                         'create_time': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
-                        for i in query]
-        self.finish(item)
+        response = dict(count=len(query))
+        response['data'] = [{'id': i.id, 'project': i.project, 'spider': i.spider,
+                            'version': i.version, 'ins': i.ins, 'job': i.job,
+                            'mode': i.mode, 'timer': i.timer, 'status': i.status,
+                            'creator': i.creator,
+                            'create_time': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
+                            for i in query]
+        self.finish(response)
 
     async def post(self, *args, **kwargs):
         arguments = SchedulersForm(self.request.arguments)
+        if not arguments.validate():
+            return self.interrupt(400, 'failure of params validator')
         token = self.request.headers.get('Authorization')
         project = arguments.project.data
         version = arguments.version.data
@@ -116,42 +123,51 @@ class SchedulersHandler(RequestHandler):
         if status:
             schedulers.add_job(execute_task, mode, trigger_args=timer, id=jid,
                                args=[project, spider, version, ins, mode, arguments.timer.data, username, status])
+        self.over(201, {'project': project, 'version': version, 'status': status})
 
     async def put(self, *args, **kwargs):
         arguments = SchedulersForm(self.request.arguments)
+        if not arguments.validate():
+            return self.interrupt(400, 'failure of params validator')
         token = self.request.headers.get('Authorization')
         sid = arguments.id.data
         version = arguments.version.data
         mode = arguments.mode.data
-        timer = ast.literal_eval(arguments.timer.data) or ''
         username = get_user_from_jwt(token) if token else None
         status = arguments.status.data
+        try:
+            timer = ast.literal_eval(arguments.timer.data)
+        except Exception as err:
+            return self.interrupt(400, err)
         query = await Schedulers.filter(id=sid).first()
         if query.status and not status:  # cancel task according to status
             try:
                 schedulers.remove_job(query.jid)
-            except Exception as error:
-                logging.error(error)
+            except Exception as err:
+                return self.interrupt(400, err)
         if status and not query.status:  # add task according to status
             schedulers.add_job(execute_task, mode, trigger_args=timer, id=query.jid,
                                args=[query.project, query.spider, version, mode, timer, username, status])
         await Schedulers.filter(id=sid).update(mode=mode, timer=arguments.timer.data,
                                                creator=username, status=status)
+        self.finish({'project': query.project, 'version': version, 'status': status})
 
 
 class RecordsHandler(RequestHandler):
     async def get(self, *args, **kwargs):
         arguments = SchedulersForm(self.request.arguments)
-        params, offset, limit, ordering = prep_params(arguments)
+        if not arguments.validate():
+            return self.interrupt(400, 'failure of params validator')
+        params, offset, limit, ordering = prep(arguments)
         query = await Records.filter(**params).offset(offset).limit(limit).order_by(ordering)
-        item = dict(count=len(query))
-        item['data'] = [{'id': i.id, 'project': i.project, 'spider': i.spider,
-                         'version': i.version, 'ins': i.ins, 'job': i.job,
-                         'mode': i.mode, 'timer': i.timer, 'status': i.status,
-                         'start': i.start, 'end': i.end, 'period': i.period,
-                         'creator': i.creator,
-                         'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
-                        for i in query]
-        self.finish(item)
+        response = dict(count=len(query))
+        response['data'] = [{'id': i.id, 'project': i.project, 'spider': i.spider,
+                            'version': i.version, 'ins': i.ins, 'job': i.job,
+                            'mode': i.mode, 'timer': i.timer, 'status': i.status,
+                            'start': i.start, 'end': i.end, 'period': i.period,
+                            'creator': i.creator,
+                            'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
+                             for i in query]
+        self.finish(response)
 
 

@@ -7,17 +7,17 @@ from settings import default_page
 
 
 class ProjectsForm(Form):
-    id = IntegerField('id', validators=[Regexp(regex=re.compile(('\d+')))])
+    id = IntegerField('id')
     project = StringField("project name", validators=[Length(max=100, message="project name is too long")])
     version = StringField("version", validators=[Length(max=13, message='version is too long')])
     spiders = StringField("spider name list", validators=[Length(max=60, message="spider name is too long")])
     ins = BooleanField("is it scrapy")
+    offset = IntegerField('offset', default=999)
     limit = IntegerField('limit', default=default_page, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
-    order = StringField('order', default='id',
-                        validators=[AnyOf(values=["id", "-id", "spider_num",
-                                                 "-spider_num", "create_time", "-create_time"],
-                                          message='order value not')])
-    filters = StringField('filter', '', )
+    ordering = StringField('order', default='id',
+                           validators=[AnyOf(values=["id", "-id", "number",
+                                                     "-number", "create_time", "-create_time"],
+                                             message='ordering params error')])
 
 
 class SchedulersForm(Form):

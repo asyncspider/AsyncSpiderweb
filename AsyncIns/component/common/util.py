@@ -67,6 +67,12 @@ def writes(self, status: int, message: str):
     return None
 
 
+def resp(self, response: dict, status: int, message: str or dict):
+    self.set_status(status)
+    response['message'] = message
+    return response
+
+
 async def get_spiders(project: str, version: str):
     """
     get spider list in scrapy egg
@@ -111,7 +117,7 @@ def timedelta_format(period):
         day=int(day), hour=int(hour), minute=int(minute), second=round(second, 2))
 
 
-def prep_params(arguments: dict):
+def prep(arguments: dict):
     """Processing the received parameters
     :return: tuple
     """
@@ -124,6 +130,8 @@ def prep_params(arguments: dict):
     ordering = params.pop('ordering')
     limit = params.pop('limit')
     offset = params.pop('offset')
+    if offset == 999:
+        offset = 0
     return params, offset, limit, ordering
 
 
