@@ -52,3 +52,21 @@
         response['current_job'] = get_current_jobs(schedulers.get_job())
     TypeError: get_job() missing 1 required positional argument: 'job_id'
 [E 190216 16:28:04 web:2162] 500 GET /api/v1/schedulers (127.0.0.1) 10.02ms
+[W 190216 20:12:39 web:2162] 404 GET / (127.0.0.1) 7.32ms
+[W 190216 20:12:57 web:2162] 404 GET / (::1) 0.69ms
+[W 190216 20:12:57 web:2162] 404 GET /favicon.ico (::1) 0.80ms
+[W 190216 21:41:09 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 2.63ms
+[W 190216 21:41:30 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 1.62ms
+[W 190216 21:42:28 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 2.04ms
+[W 190216 21:43:37 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 1.69ms
+[W 190216 21:43:43 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 1.88ms
+[W 190216 21:43:54 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 1.37ms
+[W 190216 21:44:05 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 1.69ms
+[W 190216 21:45:37 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 1.52ms
+[W 190216 21:46:16 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 3.46ms
+[W 190216 21:47:28 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 1.43ms
+[W 190216 21:48:51 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 3.38ms
+[W 190216 21:49:29 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 1.31ms
+[W 190216 21:49:37 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 1.42ms
+[W 190216 21:49:58 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 2.01ms
+[W 190216 22:04:27 web:2162] 400 DELETE /api/v1/projects (127.0.0.1) 1.35ms
