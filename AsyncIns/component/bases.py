@@ -1,6 +1,6 @@
 import six
 from functools import wraps
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 from tornado.ioloop import IOLoop
 from tornado.web import RequestHandler
@@ -71,6 +71,15 @@ class CustomBaseScheduler(BaseScheduler):
                 self._real_add_job(job, jobstore, replace_existing)
 
         return job
+
+    def reschedule_job(self, job_id, jobstore=None, trigger=None, trigger_args=None):
+        """
+        :param: dict trigger_args
+        """
+        trigger = self._create_trigger(trigger, trigger_args)
+        now = datetime.now(self.timezone)
+        next_run_time = trigger.get_next_fire_time(None, now)
+        return self.modify_job(job_id, jobstore, trigger=trigger, next_run_time=next_run_time)
 
 
 def run_in_ioloop(func):

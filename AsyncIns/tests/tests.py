@@ -1,32 +1,43 @@
-from tornado.process import Subprocess
-from tornado import ioloop
-from asyncio.subprocess import PIPE
-from datetime import datetime
+import unittest
+from .base_t import *
 
 
-# class Subs(Subprocess):
-#     def set_exit_callback(self, callback):
-#         self._exit_callback = stack_context.wrap(callback)
-#         Subprocess.initialize()
-#         Subprocess._waiting[self.pid] = self
-#         Subprocess._try_cleanup_process(self.pid)
-#
+class TestMathFunc(unittest.TestCase):
 
+    # TestCase基类方法,所有case执行之前自动执行
+    @classmethod
+    def setUpClass(cls):
+        print("这里是所有测试用例前的准备工作")
 
-async def runner():
-    p = Subprocess(['python -m test'], stdout=PIPE, stderr=PIPE, shell=True)
-    out, err = await p.stdout.read(), p.stderr.read()
-    p.set_exit_callback(ends(out, err))
+    # TestCase基类方法,所有case执行之后自动执行
+    @classmethod
+    def tearDownClass(cls):
+        print("这里是所有测试用例后的清理工作")
 
+    # TestCase基类方法,每次执行case前自动执行
+    def setUp(self):
+        print("这里是一个测试用例前的准备工作")
 
-def ends(std, out, err):
-    print(std)
-    print('end time:')
-    print(datetime.now())
+    # TestCase基类方法,每次执行case后自动执行
+    def tearDown(self):
+        print("这里是一个测试用例后的清理工作")
+
+    @unittest.skip("我想临时跳过这个测试用例.")
+    def test_add(self):
+        self.assertEqual(3, add(1, 2))
+        self.assertNotEqual(3, add(2, 2))  # 测试业务方法add
+
+    def test_minus(self):
+        self.skipTest('跳过这个测试用例')
+        self.assertEqual(1, minus(3, 2))  # 测试业务方法minus
+
+    def test_multi(self):
+        self.assertEqual(6, multi(2, 3))  # 测试业务方法multi
+
+    def test_divide(self):
+        self.assertEqual(2, divide(6, 3))  # 测试业务方法divide
+        self.assertEqual(2.5, divide(5, 2))
 
 
 if __name__ == '__main__':
-    loop = ioloop.IOLoop.current()
-    loop.run_sync(runner())
-
-
+    unittest.main(verbosity=2)

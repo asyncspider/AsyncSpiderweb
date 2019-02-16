@@ -30,5 +30,7 @@ EGG_DIR = path.join(BASEDIR, 'eggs')
 
 TEMP_DIR = path.join(BASEDIR, 'temp')
 
+TORNADO_LOG = path.join(path.dirname(__file__), 'logs/tornado.log')
+
 SPIDER_LOG_DIR = path.join(BASEDIR, 'logs/spiders')
 

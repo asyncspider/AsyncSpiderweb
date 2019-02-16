@@ -2,6 +2,7 @@ import ast
 import logging
 from time import time
 from tornado.web import RequestHandler
+from apscheduler.jobstores.base import JobLookupError
 from .forms import ProjectsForm, SchedulersForm, UserForm, LoginForm
 from .parts import *
 from .bases import RestfulHandler
@@ -24,7 +25,10 @@ class IndexHandler(RestfulHandler):
     #     logging.warning(data)
 
     async def get(self, *args, **kwargs):
-        self.finish({'message': 'index'})
+        jobs = get_current_jobs(schedulers.get_jobs())
+        response = dict(count=len(jobs))
+        response['result'] = jobs
+        self.finish(response)
 
 
 class ProjectsHandler(RestfulHandler):
@@ -51,7 +55,7 @@ class ProjectsHandler(RestfulHandler):
         if not arguments.validate():
             return self.interrupt(400, 'failed of parameters validator')
         token = self.request.headers.get('Authorization')
-        username = get_username(token) if token else None
+        username = get_username(token)
         project = arguments.project.data
         ssp = arguments.ssp.data
         spiders = project
@@ -78,16 +82,19 @@ class ProjectsHandler(RestfulHandler):
         arguments = ProjectsForm(self.request.arguments)
         if not arguments.validate():
             return self.interrupt(400, 'failed of parameters validator')
-        sid = arguments.id.data
+        pid = arguments.id.data
         project = arguments.project.data
         version = arguments.version.data
-        try:
-            await Projects.filter(id=sid).delete()
-            await self.storage.delete(project, version)
-            self.over(204, {'project': project, 'version': version, 'message': 'successful'})
-        except Exception as error:
-            logging.warning(error)
-            self.over(400, {'project': project, 'version': version, 'message': 'failed'})
+        query = await Projects.filter(Q(id=pid) & Q(project=project) & Q(version=version))
+        if query:
+            try:
+                await Projects.filter(id=pid).delete()
+                result = self.storage.delete(self.storage.makepath(project, version))
+                if result:
+                    return self.over(200, {'project': project, 'version': version, 'message': 'successful'})
+            except Exception as error:
+                logging.warning(error)
+        self.over(400, {'project': project, 'version': version, 'message': 'failed'})
 
 
 class SchedulersHandler(RestfulHandler):
@@ -97,9 +104,10 @@ class SchedulersHandler(RestfulHandler):
         if not arguments.validate():
             return self.interrupt(400, 'failed of parameters validator')
         params, offset, limit, ordering = prep(arguments)
-        query = await Schedulers.filter(**params).offse(offset).limit(limit).order_by(ordering)
+        query = await Schedulers.filter(**params).offset(offset).limit(limit).order_by(ordering)
         response = dict(count=len(query))
-        response['data'] = [
+        response['current'] = get_current_jobs(schedulers.get_jobs())
+        response['results'] = [
             {'id': i.id, 'jid': i.jid, 'project': i.project, 'spider': i.spider,
              'version': i.version, 'ssp': i.ssp, 'job': i.job,
              'mode': i.mode, 'timer': i.timer, 'status': i.status,
@@ -117,7 +125,7 @@ class SchedulersHandler(RestfulHandler):
         spider = arguments.spider.data
         ssp = arguments.ssp.data
         mode = arguments.mode.data
-        username = get_username(token) if token else None
+        username = get_username(token)
         # mode is interval, value {'seconds': 5}
         # mode is date, value {'run_date': '2019-02-13 17:05:05'}
         # mode is cron, value {'day_of_week': 'mon-fri', 'hour': 5, 'minute': 30, 'end_date': '2014-05-30'}
@@ -145,7 +153,7 @@ class SchedulersHandler(RestfulHandler):
         token = self.request.headers.get('Authorization')
         sid = arguments.id.data
         mode = arguments.mode.data
-        username = get_username(token) if token else None
+        username = get_username(token)
         status = arguments.status.data
         try:
             timer = ast.literal_eval(arguments.timer.data)
@@ -153,18 +161,26 @@ class SchedulersHandler(RestfulHandler):
             logging.warning(error)
             return self.interrupt(400, 'error of timer')
         query = await Schedulers.filter(id=sid).first()
-        if query.status and not status:  # cancel task according to status
-            try:
+        if not query:
+            return self.interrupt(400, 'This scheduler dose not exist')
+        try:
+            if query.status and not status:  # cancel task according to status
                 schedulers.remove_job(query.jid)
-            except Exception as err:
-                logging.warning(err)
-                return self.interrupt(400, 'error of scheduler job remove')
-        if status and not query.status:  # add task according to status
-            schedulers.add_job(execute_task, mode,
-                               trigger_args=timer, id=query.jid,
-                               args=[query.project, query.spider, query.version, mode, timer, username, status])
-        await Schedulers.filter(id=sid).update(mode=mode, timer=arguments.timer.data,
-                                               creator=username, status=status)
+            if status and not query.status:  # add task according to status
+                schedulers.add_job(execute_task, mode,
+                                   trigger_args=timer, id=query.jid,
+                                   args=[query.project, query.spider, query.version, mode, timer, username, status])
+            if status and status == query.status:  # update task according to status
+                schedulers.reschedule_job(query.jid, trigger=mode, trigger_args=timer)
+            await Schedulers.filter(id=sid).update(mode=mode, timer=arguments.timer.data,
+                                                   creator=username, status=status)
+        except JobLookupError as error:
+            logging.warning(error)
+            await Schedulers.filter(id=sid).delete()
+            return self.interrupt(reason='No job by the id of {jid} was found.'
+                                  'This may be because the timer has expired, not a fatal error.'
+                                  'The corresponding scheduler will be delete.'
+                                  'Don\'t worry.'.format(jid=query.jid))
         self.finish({'project': query.project, 'version': query.version, 'status': status, 'message': 'successful'})
 
     async def delete(self, *args, **kwargs):
@@ -172,12 +188,18 @@ class SchedulersHandler(RestfulHandler):
         if not arguments.validate():
             return self.interrupt(400, 'failed of parameters validator')
         sid = arguments.id.data
-        query = await Schedulers.filter(id=sid)
+        query = await Schedulers.filter(id=sid).first()
+        if not query:
+            return self.interrupt(400, 'This scheduler dose not exist')
+        try:
+            schedulers.remove_job(query.jid)
+        except JobLookupError as error:
+            logging.warning(error)
         await Schedulers.filter(id=sid).delete()
         response = {'id': query.id, 'project': query.project, 'spider': query.spider,
                     'version': query.version, 'jid': query.jid, 'mode': query.mode,
                     'timer': query.timer, 'message': 'successful'}
-        self.over(204, response)
+        return self.over(200, response)
 
 
 class RecordsHandler(RequestHandler):
@@ -190,7 +212,7 @@ class RecordsHandler(RequestHandler):
         response = dict(count=len(query))
         response['data'] = [
             {'id': i.id, 'project': i.project, 'spider': i.spider,
-             'version': i.version, 'ins': i.ins, 'job': i.job,
+             'version': i.version, 'ssp': i.ssp, 'job': i.job,
              'mode': i.mode, 'timer': i.timer, 'status': i.status,
              'start': i.start, 'end': i.end, 'period': i.period,
              'creator': i.creator, 'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}

@@ -2,6 +2,7 @@ import os
 import sys
 import hashlib
 import asyncio
+import logging
 import pkg_resources
 from datetime import datetime
 from os import path, remove
@@ -14,7 +15,7 @@ from asyncio.subprocess import PIPE
 import jwt
 import aiofiles
 
-from settings import EGG_DIR, TEMP_DIR, SECRET, EXPIRE, EXECUTOR_PILOT
+from settings import EGG_DIR, TEMP_DIR, SECRET, EXPIRE, EXECUTOR_PILOT, DEFAULT_OFFSET
 from tortoise.queryset import Q
 from model import User
 
@@ -65,9 +66,11 @@ def activate_egg(egg_path):
 
 def get_username(token: str):
     """ Get username from json web token """
-    info = jwt.decode(token, SECRET, leeway=EXPIRE, options={'verify_exp': True})
-    username = info.get('username')
-    return username
+    if token:
+        info = jwt.decode(token, SECRET, leeway=EXPIRE, options={'verify_exp': True})
+        username = info.get('username')
+        return username
+    return None
 
 
 def timedelta_format(period):
@@ -83,7 +86,7 @@ def timedelta_format(period):
         day=int(day), hour=int(hour), minute=int(minute), second=round(second, 2))
 
 
-def prep(arguments: dict, threshold: int = 999):
+def prep(arguments: dict, threshold: int = DEFAULT_OFFSET):
     """ Filtering and classification of parameters """
     params = {}
     for i in arguments.data.keys():
@@ -97,6 +100,21 @@ def prep(arguments: dict, threshold: int = 999):
     if offset == threshold:
         offset = 0
     return params, offset, limit, ordering
+
+
+def get_current_jobs(jobs: object):
+    """Get current job and format the args
+    :param jobs: apscheduler Job object list
+    :return: job list
+    """
+    result, des = [], {}
+    for i in jobs:
+        des['jid'] = i.id
+        des['func'] = i.func_ref
+        des['project'], des['spider'], des['version'], des['ssp'], des['mode'], \
+        des['timer'], des['creator'], des['status'] = i.args
+        result.append(des)
+    return result
 
 
 def authorization(func):
@@ -190,7 +208,12 @@ class FileStorage:
         return "{project}_{version}.egg".format(project=project, version=version)
 
     def delete(self, file_path):
-        remove(file_path)
+        try:
+            remove(file_path)
+            return True
+        except Exception as error:
+            logging.warning(error)
+            return False
 
     async def copy_to_temp(self, project, version, temp=TEMP_DIR, job=None):
         storage_egg = self.makepath(project, version)

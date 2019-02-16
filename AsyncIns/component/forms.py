@@ -26,10 +26,10 @@ class SchedulersForm(Form):
     version = StringField("version")
     spider = StringField("spider name")
     ssp = BooleanField("Is it single spider project")
-    mode = StringField('mode', validators=[AnyOf(values=('date', 'interval', 'cron'), message='mode error')])
+    mode = StringField('mode', validators=[AnyOf(values=('date', 'interval', 'cron', ''), message='mode error')])
     timer = StringField()
     status = BooleanField('status')
-    offset = IntegerField('offset')
+    offset = IntegerField('offset', default=DEFAULT_OFFSET)
     limit = IntegerField('limit', default=DEFAULT_PAGE, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
     ordering = StringField('order', default='id',
                            validators=[AnyOf(values=["id", "-id", "status",

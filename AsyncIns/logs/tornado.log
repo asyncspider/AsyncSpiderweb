@@ -1,0 +1,54 @@
+[W 190216 15:59:00 base_py3:24] Run time of job "execute_task (trigger: interval[0:00:20], next run at: 2019-02-16 15:59:13 CST)" was missed by 0:00:06.933134
+[W 190216 15:59:00 base_py3:24] Run time of job "execute_task (trigger: interval[0:01:30], next run at: 2019-02-16 15:59:03 CST)" was missed by 0:01:26.933351
+[E 190216 16:13:32 web:1670] Uncaught exception GET /api/v1/ (127.0.0.1)
+    HTTPServerRequest(protocol='http', host='localhost:8205', method='GET', uri='/api/v1/', version='HTTP/1.1', remote_ip='127.0.0.1')
+    Traceback (most recent call last):
+      File "/home/gannicus/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/web.py", line 1592, in _execute
+        result = yield result
+      File "/home/gannicus/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/gen.py", line 1133, in run
+        value = future.result()
+      File "/home/gannicus/github/AsyncIns/AsyncIns/component/handlers.py", line 28, in get
+        jobs = get_current_jobs(schedulers.get_jobs())
+      File "/home/gannicus/github/AsyncIns/AsyncIns/component/parts.py", line 110, in get_current_jobs
+        i['project'], i['spider'], i['version'], i['ssp'], i['mode'], i['timer'], i['creator'], i['status'] = i.args
+    TypeError: 'Job' object does not support item assignment
+[E 190216 16:13:32 web:2162] 500 GET /api/v1/ (127.0.0.1) 6.68ms
+[E 190216 16:14:06 web:1670] Uncaught exception GET /api/v1/ (127.0.0.1)
+    HTTPServerRequest(protocol='http', host='localhost:8205', method='GET', uri='/api/v1/', version='HTTP/1.1', remote_ip='127.0.0.1')
+    Traceback (most recent call last):
+      File "/home/gannicus/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/web.py", line 1592, in _execute
+        result = yield result
+      File "/home/gannicus/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/gen.py", line 1133, in run
+        value = future.result()
+      File "/home/gannicus/github/AsyncIns/AsyncIns/component/handlers.py", line 28, in get
+        jobs = get_current_jobs(schedulers.get_jobs())
+      File "/home/gannicus/github/AsyncIns/AsyncIns/component/parts.py", line 110, in get_current_jobs
+        i['project'], i['spider'], i['version'], i['ssp'], i['mode'], i['timer'], i['creator'], i['status'] = i.args
+    TypeError: 'Job' object does not support item assignment
+[E 190216 16:14:06 web:2162] 500 GET /api/v1/ (127.0.0.1) 5742.51ms
+[E 190216 16:14:50 web:1670] Uncaught exception GET /api/v1/ (127.0.0.1)
+    HTTPServerRequest(protocol='http', host='localhost:8205', method='GET', uri='/api/v1/', version='HTTP/1.1', remote_ip='127.0.0.1')
+    Traceback (most recent call last):
+      File "/home/gannicus/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/web.py", line 1592, in _execute
+        result = yield result
+      File "/home/gannicus/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/gen.py", line 1133, in run
+        value = future.result()
+      File "/home/gannicus/github/AsyncIns/AsyncIns/component/handlers.py", line 28, in get
+        jobs = get_current_jobs(schedulers.get_jobs())
+      File "/home/gannicus/github/AsyncIns/AsyncIns/component/parts.py", line 110, in get_current_jobs
+        i['project'], i['spider'], i['version'], i['ssp'], i['mode'], i['timer'], i['creator'], i['status'] = i.args
+    TypeError: 'Job' object does not support item assignment
+[E 190216 16:14:50 web:2162] 500 GET /api/v1/ (127.0.0.1) 36855.42ms
+[W 190216 16:14:50 base_py3:24] Run time of job "execute_task (trigger: interval[0:00:20], next run at: 2019-02-16 16:14:59 CST)" was missed by 0:00:11.525721
+[W 190216 16:25:33 web:2162] 404 GET /favicon.ico (::1) 8.76ms
+[E 190216 16:28:04 web:1670] Uncaught exception GET /api/v1/schedulers (127.0.0.1)
+    HTTPServerRequest(protocol='http', host='localhost:8205', method='GET', uri='/api/v1/schedulers', version='HTTP/1.1', remote_ip='127.0.0.1')
+    Traceback (most recent call last):
+      File "/home/gannicus/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/web.py", line 1592, in _execute
+        result = yield result
+      File "/home/gannicus/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/gen.py", line 1133, in run
+        value = future.result()
+      File "/home/gannicus/github/AsyncIns/AsyncIns/component/handlers.py", line 109, in get
+        response['current_job'] = get_current_jobs(schedulers.get_job())
+    TypeError: get_job() missing 1 required positional argument: 'job_id'
+[E 190216 16:28:04 web:2162] 500 GET /api/v1/schedulers (127.0.0.1) 10.02ms
