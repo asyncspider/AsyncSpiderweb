@@ -10,35 +10,31 @@ class ProjectsForm(Form):
     id = IntegerField('id')
     project = StringField("project name", validators=[Length(max=100, message="project name is too long")])
     version = StringField("version", validators=[Length(max=13, message='version is too long')])
-    spiders = StringField("spider name list", validators=[Length(max=60, message="spider name is too long")])
-    ins = BooleanField("is it scrapy")
+    spiders = StringField("multiple or single spider name")
+    ssp = BooleanField("Is it single spider project")
     offset = IntegerField('offset', default=DEFAULT_OFFSET)
     limit = IntegerField('limit', default=DEFAULT_PAGE, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
-    ordering = StringField('order', default='id',
+    ordering = StringField('ordering', default='id',
                            validators=[AnyOf(values=["id", "-id", "number",
                                                      "-number", "create_time", "-create_time"],
-                                             message='ordering params error')])
+                                             message='error of ordering parameters')])
 
 
 class SchedulersForm(Form):
-    id = IntegerField('id', validators=[Regexp(regex=re.compile(('\d+')))])
-    project = StringField("project name", validators=[Length(max=160, message="Field Length Cannot Pass Validation")])
+    id = IntegerField('id')
+    project = StringField("project name", validators=[Length(max=100, message="project name is too long")])
     version = StringField("version")
     spider = StringField("spider name")
-    ins = BooleanField('asyncins or scrapy. True is asyncins')
+    ssp = BooleanField("Is it single spider project")
     mode = StringField('mode', validators=[AnyOf(values=('date', 'interval', 'cron'), message='mode error')])
     timer = StringField()
     status = BooleanField('status')
     offset = IntegerField('offset')
     limit = IntegerField('limit', default=DEFAULT_PAGE, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
     ordering = StringField('order', default='id',
-                           validators=[AnyOf(values=["id", "-id", "number",
-                                       "-number", "create_time", "-create_time"],
-                                             message='order value not')])
-
-
-class RecordsForm(Form):
-    pass
+                           validators=[AnyOf(values=["id", "-id", "status",
+                                       "-status", "create_time", "-create_time"],
+                                             message='error of ordering parameters')])
 
 
 class UserForm(Form):
@@ -47,16 +43,16 @@ class UserForm(Form):
     password = StringField()
     status = BooleanField()
     email = StringField()
-    # role = StringField('user role',
-    #                    validators=[AnyOf(values=('observer', 'developer', 'superuser'),
-    #                                      message='user role error')])
-    offset = IntegerField('offset', default=999)
+    role = StringField('user role',
+                       validators=[AnyOf(values=('observer', 'developer', 'superuser'),
+                                         message='user role error')])
+    offset = IntegerField('offset', default=DEFAULT_OFFSET)
     limit = IntegerField('limit', default=DEFAULT_PAGE, validators=[NumberRange(min=1, max=100, message='limit 1-100')])
-    ordering = StringField('order', default='id',
-                           validators=[AnyOf(values=["id", "-id", "username",
-                                                     "-username", "status",  "-status",
+    ordering = StringField('ordering', default='id',
+                           validators=[AnyOf(values=["id", "-id", "verify",
+                                                     "-verify", "status",  "-status",
                                                      "create_time", "-create_time"],
-                                             message='order value not')])
+                                             message='error of ordering parameters')])
 
 
 class LoginForm(Form):
@@ -66,13 +62,3 @@ class LoginForm(Form):
     email = StringField()
     status = StringField()
     code = StringField('verify code')
-
-
-class RegisterForm(Form):
-    pass
-
-
-class RoleForm(Form):
-    id = IntegerField()
-    name = StringField()
-    permissions = StringField()

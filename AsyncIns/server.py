@@ -1,3 +1,4 @@
+import logging
 from os import path
 
 from tornado import ioloop
@@ -11,11 +12,11 @@ from settings import schedulers
 
 define('port', default=8205, help='run on the given port', type=int)
 define('debug', default=True, help='set tornado debug mode', type=bool)
-options.log_file_prefix = path.join(path.dirname(__file__), 'logs/tornado.log')  # logs path
-options.log_rotate_mode = 'time'   # logging mode - rotate: time or size
-options.log_rotate_when = 'D'      # logging unit: S / M / H / D / W0 - W6
-options.log_rotate_interval = 60   # logging interval: 60 seconds
-options.logging = 'warning'  # logging level: debug info warning error
+# options.log_file_prefix = path.join(path.dirname(__file__), 'logs/tornado.log')  # logs path
+# options.log_rotate_mode = 'time'   # logging mode - rotate: time or size
+# options.log_rotate_when = 'D'      # logging unit: S / M / H / D / W0 - W6
+# options.log_rotate_interval = 60   # logging interval: 60 seconds
+# options.logging = 'warning'  # logging level: debug info warning error
 options.parse_command_line()
 
 
@@ -29,5 +30,7 @@ if __name__ == "__main__":
     schedulers.start()
     loop = ioloop.IOLoop.current()
     loop.run_sync(initialize_database)
+    logging.info('Tornado server start on http://localhost:{port}, DEBUG is {debug}'
+                 .format(port=options.port, debug=options.debug))
     loop.start()
 

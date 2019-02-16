@@ -19,6 +19,12 @@ BASEDIR = path.dirname(path.abspath(__file__))
 
 # Json web token secret key
 SECRET = 'A1s3y5n7c9S0p2i4d6e8r2w0e5b'
+# Json web token
+ALGORITHM = 'HS256'
+
+# executor
+EXECUTOR_PILOT = 'component.executor.pilot'
+EXECUTOR_RIDER = 'component.executor.rider'
 
 EGG_DIR = path.join(BASEDIR, 'eggs')
 

@@ -14,7 +14,7 @@ from asyncio.subprocess import PIPE
 import jwt
 import aiofiles
 
-from settings import EGG_DIR, TEMP_DIR, SECRET, EXPIRE
+from settings import EGG_DIR, TEMP_DIR, SECRET, EXPIRE, EXECUTOR_PILOT
 from tortoise.queryset import Q
 from model import User
 
@@ -44,7 +44,7 @@ def random_characters(minimum: int = 97, maximum: int = 123, n: int = 6):
 async def get_spider_list(project: str, version: str):
     """ Get spider list from scrapy egg """
     process_obj = await asyncio.create_subprocess_exec(
-        sys.executable, '-m', 'component.common.runner', 'list',
+        sys.executable, '-m', EXECUTOR_PILOT, 'list',
         project, version, str(uuid1()),
         stdout=PIPE, stderr=PIPE)
     stdout, stderr = await process_obj.communicate()  # Wait for the subprocess exit and read one line of output.
