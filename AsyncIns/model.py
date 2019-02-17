@@ -85,3 +85,16 @@ class Verify(Model):
         return self.code
 
 
+class OperationLog(Model):
+    id = IntField(pk=True)
+    operator = CharField(max_length=64, null=True)
+    interface = CharField(max_length=255, null=True)
+    method = CharField(max_length=64, null=True)
+    status_code = IntField(null=True)
+    args = TextField(null=True)
+    hostname = CharField(max_length=255, null=True)
+    address = CharField(max_length=64, null=True)
+    operation_time = DatetimeField(null=True)
+
+
+

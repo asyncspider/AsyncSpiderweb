@@ -1,8 +1,10 @@
 import six
+import socket
 from functools import wraps
 from datetime import timedelta, datetime
 
 from tornado.ioloop import IOLoop
+from tornado import gen
 from tornado.web import RequestHandler
 from apscheduler.util import maybe_ref
 from apscheduler.job import Job
@@ -10,6 +12,8 @@ from apscheduler.schedulers.base import BaseScheduler
 from apscheduler.schedulers.tornado import TornadoScheduler
 from apscheduler.util import undefined
 from apscheduler.schedulers.base import STATE_STOPPED
+
+from model import OperationLog
 
 
 class RestfulHandler(RequestHandler):
@@ -24,16 +28,35 @@ class RestfulHandler(RequestHandler):
                         'Content-Type, Access-Control-Allow-Origin,'
                         'Access-Control-Allow-Headers, X-Requested-By, Access-Control-Allow-Methods')
 
-    def interrupt(self, status_code: int = 200, reason: str = 'Response was forced to interrupt'):
+    async def interrupt(self, status_code: int = 200, reason: str = 'Response was forced to interrupt'):
         resp = dict(message=reason)
         if isinstance(resp, dict):
             self.set_status(status_code)
             self.write(resp)
+            await self.async_finish()
 
-    def over(self, status_code: int = 200, data: dict = {'message': 'Response was finish'}):
+    async def over(self, status_code: int = 200, data: dict = {'message': 'Response was finish'}):
         self.set_status(status_code)
         self.write(data)
+        await self.async_finish()
         self.finish()
+
+    async def async_finish(self):
+        user = self.current_user or 'anonymous'
+        hostname = socket.gethostname()
+        address = socket.gethostbyname(hostname)
+        method = self.request.method
+        interface = self.request.path
+        args = self.request.query
+        await OperationLog.create(operator=user, hostname=hostname, address=address, method=method, args=args,
+                                  interface=interface, status_code=self.get_status(), operation_time=datetime.now())
+
+    # async def operation_log(self):
+    #     user = self.current_user or 'anonymous'
+    #     hostname = socket.gethostname()
+    #     address = socket.gethostbyname(hostname)
+    #     await OperationLog.create(operator=user.username, hostname=hostname, address=address,
+    #                               interface='', status_code=self.get_status(), operation_time=datetime.now())
 
 
 class CustomBaseScheduler(BaseScheduler):

@@ -3,7 +3,7 @@ import logging
 from time import time
 from tornado.web import RequestHandler
 from apscheduler.jobstores.base import JobLookupError
-from .forms import ProjectsForm, SchedulersForm, UserForm, LoginForm
+from .forms import *
 from .parts import *
 from .bases import RestfulHandler
 from .executor.distribute import execute_task
@@ -28,7 +28,7 @@ class IndexHandler(RestfulHandler):
         jobs = get_current_jobs(schedulers.get_jobs())
         response = dict(count=len(jobs))
         response['result'] = jobs
-        self.finish(response)
+        await self.over(data=response)
 
 
 class ProjectsHandler(RestfulHandler):
@@ -38,7 +38,7 @@ class ProjectsHandler(RestfulHandler):
     async def get(self, *args, **kwargs):
         arguments = ProjectsForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         params, offset, limit, ordering = prep(arguments)
         query = await Projects.filter(**params).offset(offset).limit(limit).order_by(ordering)
         response = dict(count=len(query))
@@ -48,12 +48,12 @@ class ProjectsHandler(RestfulHandler):
              'filename': i.filename,  'creator': i.creator,
              'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
             for i in query]
-        self.finish(response)
+        await self.over(data=response)
 
     async def post(self, *args, **kwargs):
         arguments = ProjectsForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         token = self.request.headers.get('Authorization')
         username = get_username(token)
         project = arguments.project.data
@@ -63,11 +63,11 @@ class ProjectsHandler(RestfulHandler):
         eggs = self.request.files.get('eggs')
         version = str(round(time()))
         if not all([eggs, project, version]):
-            return self.interrupt(400, 'missing parameters')
+            return await self.interrupt(400, 'missing parameters')
         egg = eggs.pop()
         filename = egg['filename']
         if not filename.endswith('.egg'):
-            return self.interrupt(400, 'file is not egg')
+            return await self.interrupt(400, 'file is not egg')
         filename = await self.storage.put(egg['body'], project, version)
         if not ssp:
             gross = await get_spider_list(project, version)
@@ -76,12 +76,12 @@ class ProjectsHandler(RestfulHandler):
         await Projects.create(project=project, spiders=spiders, version=version,
                               ssp=ssp, number=number, filename=filename, creator=username,
                               create_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        self.over(201, {'spider': spiders, 'number': number, 'message': 'successful'})
+        await self.over(201, {'spider': spiders, 'number': number, 'message': 'successful'})
 
     async def delete(self, *args, **kwargs):
         arguments = ProjectsForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         pid = arguments.id.data
         project = arguments.project.data
         version = arguments.version.data
@@ -91,10 +91,10 @@ class ProjectsHandler(RestfulHandler):
                 await Projects.filter(id=pid).delete()
                 result = self.storage.delete(self.storage.makepath(project, version))
                 if result:
-                    return self.over(200, {'project': project, 'version': version, 'message': 'successful'})
+                    return await self.over(200, {'project': project, 'version': version, 'message': 'successful'})
             except Exception as error:
                 logging.warning(error)
-        self.over(400, {'project': project, 'version': version, 'message': 'failed'})
+        await self.over(400, {'project': project, 'version': version, 'message': 'failed'})
 
 
 class SchedulersHandler(RestfulHandler):
@@ -102,7 +102,7 @@ class SchedulersHandler(RestfulHandler):
     async def get(self, *args, **kwargs):
         arguments = SchedulersForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         params, offset, limit, ordering = prep(arguments)
         query = await Schedulers.filter(**params).offset(offset).limit(limit).order_by(ordering)
         response = dict(count=len(query))
@@ -113,12 +113,12 @@ class SchedulersHandler(RestfulHandler):
              'mode': i.mode, 'timer': i.timer, 'status': i.status,
              'creator': i.creator, 'create_time': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
             for i in query]
-        self.finish(response)
+        await self.over(data=response)
 
     async def post(self, *args, **kwargs):
         arguments = SchedulersForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         token = self.request.headers.get('Authorization')
         project = arguments.project.data
         version = arguments.version.data
@@ -133,9 +133,9 @@ class SchedulersHandler(RestfulHandler):
             timer = ast.literal_eval(arguments.timer.data)
         except Exception as error:
             logging.warning(error)
-            return self.interrupt(400, 'error of timer')
+            return await self.interrupt(400, 'error of timer')
         if not isinstance(timer, dict):
-            return self.interrupt(400, 'error of timer')
+            return await self.interrupt(400, 'error of timer')
         status = arguments.status.data
         jid = str(uuid1())  # scheduler job id, can remove job
 
@@ -144,15 +144,15 @@ class SchedulersHandler(RestfulHandler):
                                args=[project, spider, version, ssp, mode,
                                      arguments.timer.data, username, status])
         await Schedulers.create(project=project, spider=spider, version=version,
-                                ssp=ssp, mode=mode, timer=timer,
+                                ssp=ssp, mode=mode, timer=arguments.timer.data,
                                 creator=username, status=status, jid=jid,
                                 create_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        self.over(201, {'project': project, 'version': version, 'status': status, 'message': 'successful'})
+        await self.over(201, {'project': project, 'version': version, 'status': status, 'message': 'successful'})
 
     async def put(self, *args, **kwargs):
         arguments = SchedulersForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         token = self.request.headers.get('Authorization')
         sid = arguments.id.data
         mode = arguments.mode.data
@@ -162,10 +162,10 @@ class SchedulersHandler(RestfulHandler):
             timer = ast.literal_eval(arguments.timer.data)
         except Exception as error:
             logging.warning(error)
-            return self.interrupt(400, 'error of timer')
+            return await self.interrupt(400, 'error of timer')
         query = await Schedulers.filter(id=sid).first()
         if not query:
-            return self.interrupt(400, 'This scheduler dose not exist')
+            return await self.interrupt(400, 'This scheduler dose not exist')
         try:
             if query.status and not status:  # cancel task according to status
                 schedulers.remove_job(query.jid)
@@ -180,20 +180,20 @@ class SchedulersHandler(RestfulHandler):
         except JobLookupError as error:
             logging.warning(error)
             await Schedulers.filter(id=sid).delete()
-            return self.interrupt(reason='No job by the id of {jid} was found.'
+            return await self.interrupt(reason='No job by the id of {jid} was found.'
                                   'This may be because the timer has expired, not a fatal error.'
                                   'The corresponding scheduler will be delete.'
                                   'Don\'t worry.'.format(jid=query.jid))
-        self.finish({'project': query.project, 'version': query.version, 'status': status, 'message': 'successful'})
+        await self.over(data={'project': query.project, 'version': query.version, 'status': status, 'message': 'successful'})
 
     async def delete(self, *args, **kwargs):
         arguments = SchedulersForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         sid = arguments.id.data
         query = await Schedulers.filter(id=sid).first()
         if not query:
-            return self.interrupt(400, 'This scheduler dose not exist')
+            return await self.interrupt(400, 'This scheduler dose not exist')
         try:
             schedulers.remove_job(query.jid)
         except JobLookupError as error:
@@ -202,14 +202,14 @@ class SchedulersHandler(RestfulHandler):
         response = {'id': query.id, 'project': query.project, 'spider': query.spider,
                     'version': query.version, 'jid': query.jid, 'mode': query.mode,
                     'timer': query.timer, 'message': 'successful'}
-        return self.over(200, response)
+        await self.over(200, response)
 
 
-class RecordsHandler(RequestHandler):
+class RecordsHandler(RestfulHandler):
     async def get(self, *args, **kwargs):
-        arguments = SchedulersForm(self.request.arguments)
+        arguments = RecordsForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         params, offset, limit, ordering = prep(arguments)
         query = await Records.filter(**params).offset(offset).limit(limit).order_by(ordering)
         response = dict(count=len(query))
@@ -220,7 +220,23 @@ class RecordsHandler(RequestHandler):
              'start': i.start, 'end': i.end, 'period': i.period,
              'creator': i.creator, 'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
             for i in query]
-        self.finish(response)
+        await self.over(data=response)
+
+
+class OperationLogHandler(RestfulHandler):
+    async def get(self, *args, **kwargs):
+        arguments = OperationLogForm(self.request.arguments)
+        if not arguments.validate():
+            return await self.interrupt(400, 'failed of parameters validator')
+        params, offset, limit, ordering = prep(arguments)
+        query = await OperationLog.filter(**params).offset(offset).limit(limit).order_by(ordering)
+        response = dict(count=len(query))
+        response['results'] = [
+            {'id': i.id, 'operator': i.operator, 'interface': i.interface,
+             'method': i.method, 'status_code': i.status_code, 'hostname': i.hostname,
+             'args': i.args, 'address': i.address, 'create': i.operation_time.strftime('%Y-%m-%d %H:%M:%S')}
+            for i in query]
+        await self.over(data=response)
 
 
 class RegisterHandler(RestfulHandler):
@@ -228,7 +244,7 @@ class RegisterHandler(RestfulHandler):
     async def post(self):
         arguments = UserForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         username = arguments.username.data
         email = arguments.email.data
         role = arguments.role.data
@@ -238,41 +254,41 @@ class RegisterHandler(RestfulHandler):
         if role == 'superuser':
             superuser_exits = await User.filter(role='superuser').count()
             if superuser_exits:
-                return self.interrupt(400, 'superuser is exist')
+                return await self.interrupt(400, 'superuser is exist')
         res = await User.filter(Q(username=username) | Q(email=email))
         if res:
-            return self.interrupt(400, 'username or email is exist')
+            return await self.interrupt(400, 'username or email is exist')
         await User.create(username=username, password=pwd, email=email, code=code, role=role)
-        self.over(201, {'message': 'welcome：{username} '.format(username=username)})
+        await self.over(201, {'message': 'welcome：{username} '.format(username=username)})
 
 
 class LoginHandler(RestfulHandler):
     async def post(self, *args, **kwargs):
         arguments = LoginForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         username = arguments.username.data
         pwd = str_to_hash(arguments.password.data)
         code = arguments.code.data
         user = await User.filter(Q(username=username) & Q(password=pwd)).first()
         if not user:
-            return self.interrupt(400, 'username or password error')
+            return await self.interrupt(400, 'username or password error')
         payload = {'id': user.id, 'username': user.username, 'exp': datetime.utcnow()}
         token = jwt.encode(payload, SECRET, ALGORITHM).decode('utf8')
         if user.role == 'superuser' or user.verify and user.status:
-            return self.over(data={'id': user.id, 'username': user.username, 'token': token})
+            return await self.over(data={'id': user.id, 'username': user.username, 'token': token})
         superuser = await User.filter(role='superuser').first()
         if user.status and not user.verify:
             res = await User.filter(Q(username=username) & Q(password=pwd) & Q(code=code)).first()
             if res:
                 await User.filter(Q(username=username) & Q(password=pwd) & Q(code=code)).update(verify=True)
-                return self.over(data={'id': user.id, 'username': user.username, 'token': token})
+                return await self.over(data={'id': user.id, 'username': user.username, 'token': token})
             else:
-                return self.interrupt(400,
+                return await self.interrupt(400,
                                       'verify code error, '
                                       'please contact the superuser:{username}(email:{email})'
                                       .format(username=superuser.username, email=superuser.email))
-        return self.interrupt(400,
+        return await self.interrupt(400,
                               'user status is false,'
                               'please contact the superuser:{username}(email:{email})'
                               .format(username=superuser.username, email=superuser.email))
@@ -283,7 +299,7 @@ class UserHandler(RestfulHandler):
     async def get(self):
         arguments = UserForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         params, offset, limit, ordering = prep(arguments)
         query = await User.filter(**params).offset(offset).limit(limit).order_by(ordering)
         response = dict(count=len(query))
@@ -291,19 +307,19 @@ class UserHandler(RestfulHandler):
             {'id': i.id, 'username': i.username, 'status': i.status,
              'verify': i.verify, 'code': i.code, 'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
             for i in query]
-        self.finish(response)
+        await self.over(data=response)
 
     async def put(self, *args, **kwargs):
         arguments = LoginForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         uid = arguments.id.data
         password = str_to_hash(arguments.password.data) if len(arguments.password.data) > 5 else None
         status = arguments.status.data
         email = arguments.email.data
         query = await User.filter(id=uid).first()
         if not query:
-            return self.interrupt(400, 'user dose not exist')
+            return await self.interrupt(400, 'user dose not exist')
         params = {}
         if all([email, len(email) > 5, email != query.email]):
             params['email'] = email
@@ -312,17 +328,17 @@ class UserHandler(RestfulHandler):
         if all([status, isinstance(status, bool), status != query.status]):
             params['status'] = status
         await User.filter(id=uid).update(**params)
-        self.finish({'message': 'successful'})
+        await self.over(data={'message': 'successful'})
 
     async def delete(self, *args, **kwargs):
         arguments = LoginForm(self.request.arguments)
         if not arguments.validate():
-            return self.interrupt(400, 'failed of parameters validator')
+            return await self.interrupt(400, 'failed of parameters validator')
         user_id = arguments.id.data
         query = await User.filter(id=user_id).first()
         if not query:
-            return self.interrupt(400, 'user dose not exist')
+            return await self.interrupt(400, 'user dose not exist')
         await User.filter(id=user_id).delete()
-        self.over(200, {'message': 'successful'})
+        await self.over(200, {'message': 'successful'})
 
 

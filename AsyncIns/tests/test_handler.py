@@ -221,12 +221,12 @@ class RegisterHandlerTestCase(unittest.TestCase):
     def test_register_handler_post(self):
         # Testing API with the right parameters
 
-        # Waring: If superuser in sqlite skip this testing else remove code comments
-        # params = {'username': self.username1, 'email': self.email1, 'role': self.role1}
-        # resp = requests.post(self.url, data=params)
-        # self.assertEqual(201, resp.status_code)
-        # self.assertIn('welcome', resp.text)
-        # self.assertIn(self.username1, resp.text)
+        # Waring: If superuser in sqlite skip this testing else start testing
+        params = {'username': self.username1, 'email': self.email1, 'role': self.role1}
+        resp = requests.post(self.url, data=params)
+        self.assertEqual(201, resp.status_code)
+        self.assertIn('welcome', resp.text)
+        self.assertIn(self.username1, resp.text)
 
         # Testing API with the incorrect parameters
         # There can only be one superuser
@@ -324,6 +324,37 @@ class UserHandlerTestCase(unittest.TestCase):
         resp = requests.put(self.url, data=params)
         self.assertEqual(400, resp.status_code)
         self.assertIn('user dose not exist', resp.text)
+
+    class OperationLogHandlerTestCase(unittest.TestCase):
+        def setUp(self):
+            self.url = 'http://localhost:8205/api/v1/operations'
+            self.headers = {
+                'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJnYW5uaWN1cyIsImV4cCI6MTU1MDMyMzY3MX0.LeVaHFMM7Z3GPRtzvzQ3tUr2HTuiDnLs4AHC76voxBc'}
+
+        def test_record_handler_get(self):
+            # Testing API with the right parameters
+            resp = requests.get(self.url, headers=self.headers)
+            res = json.loads(resp.text)
+            self.assertEqual(200, resp.status_code)
+            self.assertIn("count", resp.text)
+            self.assertIn("results", resp.text)
+            self.assertTrue(isinstance(res, dict))
+            self.assertNotEqual("successful", resp.text)
+            self.assertNotEqual("failed", resp.text)
+
+            # Testing API with the right parameters
+            custom_url = self.url + '?ordering=-id'
+            resp2 = requests.get(custom_url, headers=self.headers)
+            self.assertEqual(200, resp2.status_code)
+            self.assertIn("count", resp2.text)
+            self.assertIn("results", resp2.text)
+            self.assertNotEqual("successful", resp2.text)
+            self.assertTrue(isinstance(json.loads(resp2.text), dict))
+
+            # Testing API with the incorrect parameters
+            custom_url2 = self.url + '?ordering=a&offset=a&wrong=a'
+            resp3 = requests.get(custom_url2, headers=self.headers)
+            self.assertNotEqual(200, resp3.status_code)
 
 
 if __name__ == '__main__':

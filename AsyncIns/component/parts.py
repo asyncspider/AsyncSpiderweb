@@ -3,6 +3,7 @@ import sys
 import hashlib
 import asyncio
 import logging
+import socket
 import pkg_resources
 from datetime import datetime, timedelta
 from os import path, remove
@@ -17,7 +18,7 @@ import aiofiles
 
 from settings import EGG_DIR, TEMP_DIR, SECRET, EXPIRE, EXECUTOR_PILOT, DEFAULT_OFFSET
 from tortoise.queryset import Q
-from model import User
+from model import User, OperationLog
 
 
 # Simple Work. For example: something path, format conversion and other work.
@@ -132,20 +133,20 @@ def get_current_jobs(jobs: object):
 
 
 def authorization(func):
-    """ user authentication and permission decorator"""
+    """ User authentication and permission decorator"""
     @wraps(func)
     async def wrapper(self, *arg, **kwargs):
         token = self.request.headers.get('Authorization')
-        level = {'observer': 1, 'developer': 2, 'superuser': 3}
-        handler_level = level.get(self.permission)
-        if token:
+        level = {'anonymous': 0, 'observer': 1, 'developer': 2, 'superuser': 3}
+        handler_permission = level.get(self.permission)
+        if token and handler_permission:
             try:
                 info = jwt.decode(token, SECRET, leeway=EXPIRE, options={'verify_exp': True})
                 user_id = info.get('id')
                 username = info.get('username')
                 user = await User.filter(Q(id=user_id) & Q(username=username))
                 user_role = level.get(user.role)
-                if user and user_role >= handler_level:
+                if user and user_role >= handler_permission:
                     self._current_user = user
                     await func(self, *arg, **kwargs)
                 else:
