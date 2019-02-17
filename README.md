@@ -18,12 +18,14 @@ Asw 可以同时兼容 Scrapy 项目和符合目录结构设定的任何 Python 
 * 爬虫工程师 Developer
 * 懂技术的领导 Superuser
 
+![image](https://github.com/asyncins/Asw/blob/master/images/%E6%B5%85%E6%B5%B7%E6%98%8C%E8%93%9D.png)
+
 我将不懂技术的领导称之为观察者（Observer），因为他只需要查看 Index 页面展示的统计数据和漂亮的图标即可。爬虫工程师们通常会互相协作，帮助修改项目参数或修改定时
 任务的时间及状态，所以没有必要将他们的访问权以用户身份进行隔离，这样他们才能够访问到其他同事部署的项目和添加的调度任务。懂技术的领导，那显然就是 Superuser 了，
 相比爬虫工程师，Superuser 对于全局的掌控权限会更大，他对用户注册以及用户状态有着绝对的控制权。同时由于管理需要，Superuser 还可以查看 API 访问记录。
 记录类似这样：
 
-[配图]
+![image](https://github.com/asyncins/Asw/blob/master/images/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20190218074724.png)
 
 详细的记录着每个 API 的访问时间、访问者信息、请求方式、传递的参数以及 API 相应状态。
 
