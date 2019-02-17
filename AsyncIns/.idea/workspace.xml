@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ccc5ece-4d50-4afa-b392-6d7688a7aae6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/test2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/lol.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_parts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AsyncSpiderweb.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/AsyncSpiderweb.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550297140.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/tornado.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/tornado.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/base_t.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test2.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +35,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
+            <state relative-caret-position="131">
               <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
@@ -41,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/handlers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+            <state relative-caret-position="294">
+              <caret line="148" column="26" selection-start-line="148" selection-start-column="26" selection-end-line="148" selection-end-column="26" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -50,11 +56,16 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_parts.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="47" column="33" lean-forward="true" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+            <state relative-caret-position="289">
+              <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -63,10 +74,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="8" column="53" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logs/spiders/arts_tips_81465324-31f4-11e9-9167-488ad21e5e8a.log">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/unittest/__init__.pyi">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="53" column="29" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="29" />
+            <state relative-caret-position="-128">
+              <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -74,38 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/requests/api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="103" column="4" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/base_t.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-              <folding>
-                <element signature="e#0#67#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/httpclient.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-427">
-              <caret line="122" column="6" selection-start-line="122" selection-start-column="6" selection-end-line="122" selection-end-column="6" />
+            <state relative-caret-position="220">
+              <caret line="148" column="4" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -113,7 +115,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/testing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3728">
+            <state relative-caret-position="5740">
               <caret line="205" selection-start-line="205" selection-end-line="205" />
             </state>
           </provider>
@@ -122,7 +124,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/parts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3080">
+            <state relative-caret-position="3052">
               <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -142,9 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>rema</find>
-      <find>finish()</find>
-      <find>send_error</find>
       <find>def send_error</find>
       <find>def finish</find>
       <find>def put</find>
@@ -172,9 +171,13 @@
       <find>delete</find>
       <find>method</find>
       <find>file</find>
+      <find>Test the API</find>
+      <find>Aut</find>
+      <find>lol</find>
     </findStrings>
     <replaceStrings>
       <replace>failed of parameters validator</replace>
+      <replace>Testing API</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -223,10 +226,11 @@
         <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/server.py" />
         <option value="$PROJECT_DIR$/component/parts.py" />
-        <option value="$PROJECT_DIR$/component/handlers.py" />
         <option value="$PROJECT_DIR$/tests/base_t.py" />
-        <option value="$PROJECT_DIR$/tests/test2.py" />
         <option value="$PROJECT_DIR$/tests/tests.py" />
+        <option value="$PROJECT_DIR$/tests/test2.py" />
+        <option value="$PROJECT_DIR$/component/handlers.py" />
+        <option value="$PROJECT_DIR$/tests/test_part.py" />
         <option value="$PROJECT_DIR$/tests/test_handler.py" />
       </list>
     </option>
@@ -249,7 +253,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -281,6 +284,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -289,14 +293,14 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/component/executor" />
       <recent name="$PROJECT_DIR$/component/common" />
       <recent name="$PROJECT_DIR$/tests" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tests" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -311,7 +315,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.pytest in test_handler.py">
     <configuration name="pytest for test_handler.ProjectsHandlerTestCase" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="AsyncIns" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -324,6 +328,21 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_handler.ProjectsHandlerTestCase&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for test_handler.ProjectsHandlerTestCase.test_projects_handler_post" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="AsyncIns" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_handler.ProjectsHandlerTestCase.test_projects_handler_post&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -342,7 +361,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.test_handler.IndexHandlerTestCase" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_handler.RegisterHandlerTestCase.test_register_handler_post" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="AsyncIns" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -353,22 +372,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_handler.IndexHandlerTestCase&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest for tests.test_handler.IndexHandlerTestCase.test_index_get" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="AsyncIns" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_handler.IndexHandlerTestCase.test_index_get&quot;" />
+      <option name="_new_target" value="&quot;test_handler.RegisterHandlerTestCase.test_register_handler_post&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -390,18 +394,18 @@
     </configuration>
     <list>
       <item itemvalue="Python tests.pytest in test_handler.py" />
-      <item itemvalue="Python tests.pytest for tests.test_handler.IndexHandlerTestCase.test_index_get" />
-      <item itemvalue="Python tests.pytest for tests.test_handler.IndexHandlerTestCase" />
       <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase.test_projects_post" />
       <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase" />
+      <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase.test_projects_handler_post" />
+      <item itemvalue="Python tests.pytest for test_handler.RegisterHandlerTestCase.test_register_handler_post" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.pytest in test_handler.py" />
+        <item itemvalue="Python tests.pytest for test_handler.RegisterHandlerTestCase.test_register_handler_post" />
+        <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase.test_projects_handler_post" />
         <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase" />
         <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase.test_projects_post" />
-        <item itemvalue="Python tests.pytest for tests.test_handler.IndexHandlerTestCase" />
-        <item itemvalue="Python tests.pytest for tests.test_handler.IndexHandlerTestCase.test_index_get" />
       </list>
     </recent_temporary>
   </component>
@@ -419,47 +423,48 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_for_test_handler_ProjectsHandlerTestCase - 2019.02.16 at 21h 49m 40s.xml">
-      <configuration name="pytest for test_handler.ProjectsHandlerTestCase" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_handler_ProjectsHandlerTestCase - 2019.02.16 at 21h 50m 14s.xml">
-      <configuration name="pytest for test_handler.ProjectsHandlerTestCase" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_handler_ProjectsHandlerTestCase_test_projects_post - 2019.02.16 at 22h 03m 00s.xml">
-      <configuration name="pytest for test_handler.ProjectsHandlerTestCase.test_projects_post" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_handler_ProjectsHandlerTestCase_test_projects_post - 2019.02.16 at 22h 03m 23s.xml">
-      <configuration name="pytest for test_handler.ProjectsHandlerTestCase.test_projects_post" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_handler_ProjectsHandlerTestCase_test_projects_post - 2019.02.16 at 22h 03m 59s.xml">
-      <configuration name="pytest for test_handler.ProjectsHandlerTestCase.test_projects_post" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_for_test_handler_ProjectsHandlerTestCase - 2019.02.16 at 22h 04m 27s.xml">
-      <configuration name="pytest for test_handler.ProjectsHandlerTestCase" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.16 at 22h 04m 41s.xml">
+    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 06m 47s.xml">
       <configuration name="pytest in test_handler.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.16 at 22h 04m 54s.xml">
+    <history-entry file="pytest_for_test_handler_RegisterHandlerTestCase_test_register_handler_post - 2019.02.17 at 12h 10m 31s.xml">
+      <configuration name="pytest for test_handler.RegisterHandlerTestCase.test_register_handler_post" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 35m 41s.xml">
       <configuration name="pytest in test_handler.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.16 at 22h 07m 17s.xml">
+    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 36m 26s.xml">
       <configuration name="pytest in test_handler.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.16 at 22h 07m 58s.xml">
+    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 37m 04s.xml">
+      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 37m 11s.xml">
+      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 37m 39s.xml">
+      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 40m 32s.xml">
+      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 41m 10s.xml">
+      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 49m 06s.xml">
       <configuration name="pytest in test_handler.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1030" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.42094016" visible="true" weight="0.20431806" />
       <window_info id="Structure" order="1" sideWeight="0.57905984" side_tool="true" weight="0.20437567" />
       <window_info id="Favorites" order="2" sideWeight="0.50147927" side_tool="true" weight="0.19589257" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3269663" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994664" weight="0.51598173" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.2648402" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4994664" visible="true" weight="0.32077625" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.8242009" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -534,55 +539,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/component/handlers.py</url>
-          <line>204</line>
-          <option name="timeStamp" value="244" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/component/handlers.py</url>
-          <line>212</line>
-          <option name="timeStamp" value="256" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/component/handlers.py</url>
-          <line>213</line>
-          <option name="timeStamp" value="257" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/component/handlers.py</url>
-          <line>215</line>
-          <option name="timeStamp" value="258" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/component/handlers.py</url>
-          <line>217</line>
-          <option name="timeStamp" value="259" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/component/handlers.py</url>
-          <line>219</line>
-          <option name="timeStamp" value="260" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/component/handlers.py</url>
-          <line>222</line>
-          <option name="timeStamp" value="261" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/component/handlers.py</url>
           <line>12</line>
           <option name="timeStamp" value="267" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test2.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="271" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/logs/spiders/b7733ef4-3018-11e9-a163-54ee75c0e204.log" />
-    <entry file="file://$PROJECT_DIR$/logs/spiders/b9b9f2a2-3018-11e9-a163-54ee75c0e204.log" />
     <entry file="file://$PROJECT_DIR$/logs/spiders/b0c92514-3018-11e9-a163-54ee75c0e204.log" />
     <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/tortoise/models.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -691,16 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/tortoise/queryset.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -777,9 +730,23 @@
     <entry file="file://$PROJECT_DIR$/logs/tornado.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/httpclient.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3108">
+          <caret line="122" column="6" selection-start-line="122" selection-start-column="6" selection-end-line="122" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5740">
+          <caret line="205" selection-start-line="205" selection-end-line="205" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/component/parts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3080">
+        <state relative-caret-position="3052">
           <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -787,36 +754,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.py">
+    <entry file="file://$PROJECT_DIR$/logs/spiders/arts_tips_81465324-31f4-11e9-9167-488ad21e5e8a.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+        <state relative-caret-position="440">
+          <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="8" column="53" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="53" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/base_t.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3728">
-          <caret line="205" selection-start-line="205" selection-end-line="205" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/component/handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -831,31 +781,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/httpclient.py">
+    <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/requests/api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-427">
-          <caret line="122" column="6" selection-start-line="122" selection-start-column="6" selection-end-line="122" selection-end-column="6" />
+        <state relative-caret-position="220">
+          <caret line="148" column="4" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/requests/api.py">
+    <entry file="file://$PROJECT_DIR$/tests/base_t.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="103" column="4" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="4" />
+        <state relative-caret-position="196">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/unittest/__init__.pyi">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="53" column="29" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="29" />
+        <state relative-caret-position="-128">
+          <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/component/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="148" column="26" selection-start-line="148" selection-start-column="26" selection-end-line="148" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_parts.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_handler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="47" column="33" lean-forward="true" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+        <state relative-caret-position="289">
+          <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

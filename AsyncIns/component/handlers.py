@@ -134,16 +134,19 @@ class SchedulersHandler(RestfulHandler):
         except Exception as error:
             logging.warning(error)
             return self.interrupt(400, 'error of timer')
+        if not isinstance(timer, dict):
+            return self.interrupt(400, 'error of timer')
         status = arguments.status.data
         jid = str(uuid1())  # scheduler job id, can remove job
-        await Schedulers.create(project=project, spider=spider, version=version,
-                                ssp=ssp, mode=mode, timer=timer,
-                                creator=username, status=status, jid=jid,
-                                create_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+
         if status:
             schedulers.add_job(execute_task, mode, trigger_args=timer, id=jid,
                                args=[project, spider, version, ssp, mode,
                                      arguments.timer.data, username, status])
+        await Schedulers.create(project=project, spider=spider, version=version,
+                                ssp=ssp, mode=mode, timer=timer,
+                                creator=username, status=status, jid=jid,
+                                create_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         self.over(201, {'project': project, 'version': version, 'status': status, 'message': 'successful'})
 
     async def put(self, *args, **kwargs):
@@ -210,7 +213,7 @@ class RecordsHandler(RequestHandler):
         params, offset, limit, ordering = prep(arguments)
         query = await Records.filter(**params).offset(offset).limit(limit).order_by(ordering)
         response = dict(count=len(query))
-        response['data'] = [
+        response['results'] = [
             {'id': i.id, 'project': i.project, 'spider': i.spider,
              'version': i.version, 'ssp': i.ssp, 'job': i.job,
              'mode': i.mode, 'timer': i.timer, 'status': i.status,
@@ -284,7 +287,7 @@ class UserHandler(RestfulHandler):
         params, offset, limit, ordering = prep(arguments)
         query = await User.filter(**params).offset(offset).limit(limit).order_by(ordering)
         response = dict(count=len(query))
-        response['data'] = [
+        response['results'] = [
             {'id': i.id, 'username': i.username, 'status': i.status,
              'verify': i.verify, 'code': i.code, 'create': i.create_time.strftime('%Y-%m-%d %H:%M:%S')}
             for i in query]
@@ -316,7 +319,10 @@ class UserHandler(RestfulHandler):
         if not arguments.validate():
             return self.interrupt(400, 'failed of parameters validator')
         user_id = arguments.id.data
+        query = await User.filter(id=user_id).first()
+        if not query:
+            return self.interrupt(400, 'user dose not exist')
         await User.filter(id=user_id).delete()
-        self.over(204, {'message': 'successful'})
+        self.over(200, {'message': 'successful'})
 
 
