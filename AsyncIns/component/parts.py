@@ -4,7 +4,7 @@ import hashlib
 import asyncio
 import logging
 import pkg_resources
-from datetime import datetime
+from datetime import datetime, timedelta
 from os import path, remove
 from random import sample
 from functools import wraps
@@ -23,11 +23,12 @@ from model import User
 # Simple Work. For example: something path, format conversion and other work.
 
 
-def make_md5(value):
-    m = hashlib.md5()
-    m.update(value.encode('utf8'))
-    res = m.hexdigest()
-    return res
+def str_to_hash(value: str):
+    if isinstance(value, str):
+        m = hashlib.md5()
+        m.update(value.encode('utf8'))
+        return m.hexdigest()
+    raise ValueError('Parameter must be str')
 
 
 def random_characters(minimum: int = 97, maximum: int = 123, n: int = 6):
@@ -37,20 +38,26 @@ def random_characters(minimum: int = 97, maximum: int = 123, n: int = 6):
     :param n: number
     :return: random characters of length n, for example 'flower'
     """
-    letters = [chr(i) for i in range(minimum, maximum)]
-    code = "".join(sample(letters, n))
-    return code
+    if all([isinstance(minimum, int), isinstance(maximum, int), isinstance(n, int)]):
+        if maximum - minimum >= n:
+            letters = [chr(i) for i in range(minimum, maximum)]
+            code = "".join(sample(letters, n))
+            return code
+        raise ValueError('{max} - {min} >= {n}'.format(max=maximum, min=minimum, n=n))
+    raise TypeError('Parameter must be int')
 
 
 async def get_spider_list(project: str, version: str):
     """ Get spider list from scrapy egg """
-    process_obj = await asyncio.create_subprocess_exec(
-        sys.executable, '-m', EXECUTOR_PILOT, 'list',
-        project, version, str(uuid1()),
-        stdout=PIPE, stderr=PIPE)
-    stdout, stderr = await process_obj.communicate()  # Wait for the subprocess exit and read one line of output.
-    spiders = stdout.decode().rstrip().split('\n')
-    return spiders
+    if isinstance(version, str):
+        process_obj = await asyncio.create_subprocess_exec(
+            sys.executable, '-m', EXECUTOR_PILOT, 'list',
+            project, version, str(uuid1()),
+            stdout=PIPE, stderr=PIPE)
+        stdout, stderr = await process_obj.communicate()  # Wait for the subprocess exit and read one line of output.
+        spiders = stdout.decode().rstrip().split('\n')
+        return spiders
+    raise TypeError('version must be str')
 
 
 def activate_egg(egg_path):
@@ -73,33 +80,40 @@ def get_username(token: str):
     return None
 
 
-def timedelta_format(period):
+def timedelta_format(period: timedelta):
     """ Timedelta to str for human
     :period: timedelta
     :return: str, for example '5-days,18:08:15'
     """
-    value = period.total_seconds()
-    minute, second = divmod(value, 60)
-    hour, minute = divmod(minute, 60)
-    day, hour = divmod(hour, 24)
-    return "{day}-days, {hour}:{minute}:{second}".format(
-        day=int(day), hour=int(hour), minute=int(minute), second=round(second, 2))
+    if isinstance(period, timedelta):
+        value = period.total_seconds()
+        minute, second = divmod(value, 60)
+        hour, minute = divmod(minute, 60)
+        day, hour = divmod(hour, 24)
+        return "{day}-days, {hour}:{minute}:{second}".format(
+            day=int(day), hour=int(hour), minute=int(minute), second=round(second, 2))
+    raise TypeError('Parameter period must be timedelta')
 
 
-def prep(arguments: dict, threshold: int = DEFAULT_OFFSET):
+def prep(arguments: object, threshold: int = DEFAULT_OFFSET):
     """ Filtering and classification of parameters """
+    if not all([isinstance(arguments, object), isinstance(threshold, int)]):
+        raise TypeError('Parameter type error')
     params = {}
-    for i in arguments.data.keys():
-        if arguments[i].raw_data:
-            params[i] = arguments[i].raw_data[0]
-        elif arguments[i].default:
-            params[i] = arguments[i].default
-    ordering = params.pop('ordering')
-    limit = params.pop('limit')
-    offset = params.pop('offset')
-    if offset == threshold:
-        offset = 0
-    return params, offset, limit, ordering
+    try:
+        for i in arguments.data.keys():
+            if arguments[i].raw_data:
+                params[i] = arguments[i].raw_data[0]
+            elif arguments[i].default:
+                params[i] = arguments[i].default
+        ordering = params.pop('ordering')
+        limit = params.pop('limit')
+        offset = params.pop('offset')
+        if offset == threshold:
+            offset = 0
+        return params, offset, limit, ordering
+    except Exception as err:
+        raise AttributeError(err)
 
 
 def get_current_jobs(jobs: object):
@@ -230,7 +244,8 @@ class FileStorage:
             async with aiofiles.open(filename, 'w') as f:
                 await f.close()
             return True
-        except Exception:
+        except Exception as err:
+            logging.warning(err)
             return False
 
     def makepath(self, project, version, file_path=None, job=None):

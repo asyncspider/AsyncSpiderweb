@@ -233,7 +233,7 @@ class RegisterHandler(RestfulHandler):
         email = arguments.email.data
         role = arguments.role.data
         password = arguments.password.data
-        pwd = make_md5(password)
+        pwd = str_to_hash(password)
         code = random_characters(n=6)
         if role == 'superuser':
             superuser_exits = await User.filter(role='superuser').count()
@@ -252,7 +252,7 @@ class LoginHandler(RestfulHandler):
         if not arguments.validate():
             return self.interrupt(400, 'failed of parameters validator')
         username = arguments.username.data
-        pwd = make_md5(arguments.password.data)
+        pwd = str_to_hash(arguments.password.data)
         code = arguments.code.data
         user = await User.filter(Q(username=username) & Q(password=pwd)).first()
         if not user:
@@ -298,7 +298,7 @@ class UserHandler(RestfulHandler):
         if not arguments.validate():
             return self.interrupt(400, 'failed of parameters validator')
         uid = arguments.id.data
-        password = make_md5(arguments.password.data) if len(arguments.password.data) > 5 else None
+        password = str_to_hash(arguments.password.data) if len(arguments.password.data) > 5 else None
         status = arguments.status.data
         email = arguments.email.data
         query = await User.filter(id=uid).first()

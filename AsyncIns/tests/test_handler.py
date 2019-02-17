@@ -221,7 +221,7 @@ class RegisterHandlerTestCase(unittest.TestCase):
     def test_register_handler_post(self):
         # Testing API with the right parameters
 
-        # Waring: If superuser in sqlite,skip this testing else remove code comments
+        # Waring: If superuser in sqlite skip this testing else remove code comments
         # params = {'username': self.username1, 'email': self.email1, 'role': self.role1}
         # resp = requests.post(self.url, data=params)
         # self.assertEqual(201, resp.status_code)

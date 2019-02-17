@@ -2,15 +2,668 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ccc5ece-4d50-4afa-b392-6d7688a7aae6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/lol.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_parts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AsyncSpiderweb.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/AsyncSpiderweb.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AsyncSpiderweb.sqlite3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/component/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eggs/arts_1550297140.egg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/tornado.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/tornado.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/base_t.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/parts.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/parts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550297128.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550325867.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550325881.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550325894.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550326037.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550326078.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550366591.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550376407.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550378141.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550378231.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550378259.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550378432.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550378470.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eggs/arts_1550378946.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_00348e02-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_00ce25c4-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0167cd08-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_016828d4-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_020161fa-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_029b1622-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_03347d4c-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_03ce1220-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_041b0e58-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_04980148-31c1-11e9-8b6d-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_05442f90-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_05726c6e-31c3-11e9-b68e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_058c88d8-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_05ddc6a8-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_062a80fa-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_06773fde-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0710d1ce-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_07aa8574-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0843ffcc-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_08ddbac0-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_08ddfe5e-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0977532c-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0a10d518-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0b35651c-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0b67de74-31c3-11e9-b68e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0b825ce0-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0b86c088-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0bceea78-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0c2059da-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0c53298a-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0c536b7a-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0cba0894-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0d53a6c8-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0da07d44-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0dda9c16-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0ded3246-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0e86e736-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0f204a50-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_0fb9d51a-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_112fe696-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_11782b66-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_11c98416-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_12630bc0-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_12634d2e-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_12fcada0-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_13962dac-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_142fbdb2-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_14c963e8-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_15165404-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_15630a00-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_15fc9d08-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_17215976-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_1725d984-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_17535b8c-31c3-11e9-b68e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_17729ef8-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_17bae1de-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_17bb1b36-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_180c19f0-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_18a5b9f0-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_19176dee-326a-11e9-b9e1-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_193f428a-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_19d8ead2-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_19d92c36-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_1a728ece-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_1b0c1ae2-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_1ba5a926-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_1d1b9e00-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_1d63f84c-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_1db5300e-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_1e4ede8c-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_1e9ba0a4-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_1ee8649c-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_1f820384-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_201b9f7e-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_20b52cf0-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_214ebb84-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_214efdc4-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_215ebb4c-31bb-11e9-87ec-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_21e8586e-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_230cd3aa-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_233f3ad8-31c3-11e9-b68e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_235e545a-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_235e9474-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_23a66dba-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_23f7e79e-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_249179f2-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_24c44e16-3272-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_24c4c1fc-3272-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_24c5162a-3272-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_252b1cae-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_25c4a9bc-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2611b666-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_264bb58a-3272-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_265e5074-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_26f7c8ba-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_279172c4-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_29076d52-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_294fc1d6-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_29a0f59c-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_29f15f9c-31bd-11e9-8f2e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2a3aa03c-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2ad42d7c-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2ad49488-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2b6dd402-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2c075882-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2ca0f008-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2d3a882e-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2d874faa-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2dd411e0-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2ef8e23a-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2f2adadc-31c3-11e9-b68e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2f4a17ea-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2f925d78-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2f96f83e-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_2fe3b592-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_307d4e4e-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3116cc0c-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_31882902-326c-11e9-b9e1-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_31887178-326c-11e9-b9e1-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_31b0857a-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3249f140-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_324a3308-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_32e3973a-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_337d1ce6-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_34eed0d2-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_34f33880-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_353b78aa-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_358ccb42-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_362661ec-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_36594254-3271-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_36bfe5d6-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_370ccd5a-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_375989aa-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_37e094a6-3271-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_37f32144-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_388cbc1c-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_39263516-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_39bfd282-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_39c02958-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3ae45ae8-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3b16aa2e-31c3-11e9-b68e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3b178520-31c3-11e9-b68e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3b35e4b2-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3b7e2b12-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3bcf5e2e-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3bcfa028-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3c68ff0a-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3d028682-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3d9c39c4-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3e35cad8-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3e82b52c-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3ecf62e0-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_3f68f796-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_40def0a8-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_41274e28-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_41278906-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_41786ed4-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_42121c1c-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_42abbc08-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_43454542-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_43458e4e-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_43ded70a-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_447882f4-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4511f694-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_45abac7e-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_46d05aaa-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_47027692-31c3-11e9-b68e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_47219ce4-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4769ebaa-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_47bb3316-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_47edfeac-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_48080500-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4854c48e-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_48ee511a-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4975540a-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4988151e-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4a218882-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4abb0db6-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4abb51d6-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4b54b612-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4ccaaa92-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4ccaebba-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4d130542-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4d5fd646-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4d643f3e-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4dfddd04-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4e977d40-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4f30fb62-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4f7def52-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_4fca92e8-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5064458a-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_50743792-31b9-11e9-b8c6-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_50ca4fe8-31bd-11e9-8f2e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_50fdc726-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_51974fde-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_52bc279a-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_52ee2000-31c3-11e9-b68e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_530d499a-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_535575c4-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_53a6e454-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_54409174-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5440d210-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_54da24d6-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5573bd9c-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_560d453c-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_56a6d4ac-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_56f3b230-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_57406c14-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_58b67f16-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_58feacb2-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5903383c-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_595004fe-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_59e99054-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5a833b58-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5b1cb84e-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5bb666ea-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5bb6a736-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5c4fe4d0-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5ce987dc-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5d8326c4-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5ea7e468-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5ef91a54-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5f417888-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_5f929c86-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_602c4500-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_605f3d1e-3272-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_60791f14-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_60c5e820-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_615f84f6-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_61e68a66-3272-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_61f90458-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6292a714-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_632c4368-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_632c883c-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_64a239c8-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_64ea7c18-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_653bb3f8-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_653bf674-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_65d55dee-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_666eed2c-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_67089074-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_67a22d9a-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_67eefd0e-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_683bc21e-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_68d53f46-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_696ed636-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6a93a1ae-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6a93e074-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6ae4d498-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6b2d2412-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6b7e6a7a-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6c180264-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6cb19bc0-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6cb1ddba-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6d4b3f4e-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6db351e6-31bc-11e9-8349-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6de4de7c-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6e7e6bee-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6f17f35c-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_6f64e01c-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_708e0244-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_70d65a4c-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7127736e-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_71745f98-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_71c1104e-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_71f3eef4-3271-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_71f432b0-3271-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_725aeae6-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_72f44b62-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_737b4c86-3271-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_738df2f6-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_74276538-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7427b614-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_748d9c00-31bd-11e9-8f2e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_74c116a4-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_754f8e26-31c4-11e9-93c9-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_755a9ebc-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_767f6ce6-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_76cc33ae-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_76d0ac78-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7718cea2-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_776a2a36-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7803cd10-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_789d5f0a-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_78ea3842-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7936fdde-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_799effaa-31bc-11e9-8349-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_79d07db8-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7a6a107a-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7b03e446-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7c79a4aa-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7cc20dd8-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7d13418a-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7dacf2f6-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7dad36f8-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7dbceb66-31b1-11e9-b2bb-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7e469850-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7eb7ed94-326b-11e9-b9e1-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7ee00b96-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_7f799b06-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_80134146-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_80601330-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_80accdfa-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_81465324-31f4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_82239556-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_826afd04-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_826f9298-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_82bc5fa0-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8304b23a-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8304ed22-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8355ef38-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8388ebfc-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_83ef9ab4-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_84891566-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_851032b4-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8522c1e6-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_85230408-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_858b10ec-31bc-11e9-8349-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_85bc5660-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8655dd4c-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_86ef8c1a-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_86f5fc5a-31c4-11e9-9cad-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_886563da-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_88adcd62-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_88ff1d34-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_899891d8-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_89e57a24-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8a322a80-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8acc0914-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8b65680a-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8bfefdec-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8c9896b2-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8c98e810-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8e0e8772-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8e56e8e4-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8ea813f4-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8ea85828-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8ef03aa6-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8f41c4f2-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_8fdb41de-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9074f67e-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_910e6fc8-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_915b5468-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9176876a-31bc-11e9-8349-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_91a80258-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9241a212-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_92db2d18-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_92e16fea-31c4-11e9-9cad-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_945126ca-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_94994f48-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_94eac26a-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_951dbc90-326f-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_95845c70-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_961df3d8-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_961e6bf6-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_96a4f088-326f-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_96b7b16a-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_97513888-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_97eabcea-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9850d7c4-31bd-11e9-8f2e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_98844f02-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_989a8382-31c3-11e9-8e28-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_98d124b6-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_99fa5d36-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9a428636-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9a93dfd6-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9adc44a4-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9ae0b9d6-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9b2d7482-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9bc7055a-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9bf9eba8-3272-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9c60a64a-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9cfa4942-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9d623e16-31bc-11e9-8349-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9d814ae8-3272-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9d8937c0-31bf-11e9-8bfc-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9d93c30e-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9d940878-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9e2d7894-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9ec70bf6-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_9febc94a-3252-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a03882ac-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a03d08a0-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a0855842-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a0d69db0-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a1701be6-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a209cb2c-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a2569906-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a2a3539e-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a33cd120-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a3d67bc0-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a47002fc-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a5e62468-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a62e5cea-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a67f9a06-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a6c7f9b6-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a71950f4-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a719af5e-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a7b2e08c-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a84c72a4-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a8e60c6e-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a974b38e-31bf-11e9-8bfc-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a97fa11a-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_a9cc6436-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_aa193b52-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_aab2b65e-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_abd77b5a-3252-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_abdc07fc-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ac28bcae-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ac711b32-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ac716b6e-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_acc26122-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ad5beb42-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ad8eb8cc-3271-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_adf575da-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ae8f2192-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ae8f6da0-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_af162e28-3271-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_af28ba4e-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_afc22d6c-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b05bdc12-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b1d1d236-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b21a26e2-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b26b59ea-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b2b3ce08-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b3050b42-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b351d2be-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b39eb466-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b4383706-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b4d1dd0a-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b5607c46-31bf-11e9-8bfc-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b56b4812-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b604ec9a-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b6054852-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b69e8e5c-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b7c307ea-3252-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b8148610-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b814c7f6-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b85ca61e-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b8a9a38c-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b8ae1846-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b947bb02-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b9da578c-31c0-11e9-839b-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_b9e134ec-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ba7ae45a-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_bac7afc8-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_bb1469ac-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_bbadf37c-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_bc47970a-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_bdbd940e-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_be05e324-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_be572306-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_be9f8e50-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_bef0d08a-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_bf23a77e-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_bf23ef54-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_bf2448f0-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_bf8a5154-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_bf8a93bc-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c023e614-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c0aae9e0-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c0bd7b56-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c14c40d0-31bf-11e9-8bfc-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c15728d0-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c1f0b16a-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c23d7d3c-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c28a3a36-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c3aed39a-3252-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c4004298-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c4488934-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c44d104a-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c499c876-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c5337d20-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c5cd1032-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c666ae16-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c7002f9e-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c7007076-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c799d084-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c8335e6e-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c9a4ebb8-3252-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c9a95492-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c9bf6a78-31c2-11e9-8e3e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_c9f171d0-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ca42d822-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ca8b2e36-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cadc86f0-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cb7617aa-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cbc2e69c-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cbe76ece-326a-11e9-b9e1-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cbe81306-326a-11e9-b9e1-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cc0fa774-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cc40089a-31c0-11e9-a38f-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cca9481e-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cd3806b8-31bf-11e9-8bfc-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cd42e0b2-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cddc7f68-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ce760a64-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ce76eb50-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cf9aade6-3252-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_cfec10b4-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d03423ac-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d0859b60-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d085dba2-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d0b877cc-326f-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d11f1df6-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d1b8c102-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d23fc190-326f-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d2526b7a-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d2ebebfe-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d338bd2a-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d3858672-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d41f05de-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d59525a6-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d5dd7b42-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d5ddb602-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d62eb05c-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d676d4d4-3255-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d6c848e6-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d761e5f8-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d7fb82ec-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d7fbc432-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d829ea4a-31c0-11e9-a38f-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d8950618-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d923ceee-31bf-11e9-8bfc-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d92eaa5a-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_d9c8289a-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_da61c8d6-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_daea642c-31bf-11e9-8bfc-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_db865984-3252-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_dbd7b482-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_dc2017ca-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_dc716530-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_dcbe4570-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_dd0aebae-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_dda4904a-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_de3e14a2-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ded7adc2-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_df715790-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_df7291fa-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e00ad5b2-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e180d22a-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e1811244-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e1c926f4-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e215e2fe-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e21a68d4-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e2b40b0e-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e34d9f60-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e3e7293a-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e415b0c8-31c0-11e9-a38f-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e433fc50-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e4589454-326c-11e9-b9e1-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e480c1f6-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e51a50a8-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e5b3e6da-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e64d9828-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e7724302-3252-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e7c37a88-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e80bcc8c-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e85d1362-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e8f6ab60-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e8f6f03e-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e9299596-3271-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_e990475a-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ea29e714-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_eab0fcf6-3271-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_eac389ee-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_eb5d1fda-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_eba9d50e-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ebf695dc-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ed6c9916-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_edb4dbca-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_edb98900-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ee06426c-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ee9fd83a-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ef3967a0-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_efd301c4-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f001671a-31c0-11e9-a38f-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f06c7e56-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f06cc078-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f10614ba-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f19fc7fc-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f23944ac-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f35dfff8-3252-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f3914d94-31c2-11e9-b68e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f3af572c-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f3f7a21e-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f448ccac-31e6-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f4e261d0-31e8-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f52f4c2e-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f57c1c7e-31ea-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f615a270-31ec-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f6af4bd0-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f748be44-31f0-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f7e253a4-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f7e2995e-31f2-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f9585616-31e3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f9a08c18-3253-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f9f1ed74-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_f9f22eba-31e5-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_fa8b85d6-31e7-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_fabe6a3a-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_fb252996-31e9-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_fbbeb2ee-31eb-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_fc45cb6e-3270-11e9-9914-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_fc5847cc-31ed-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_fca5183a-31ee-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_fcf1ddae-31ef-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_fd8b73e0-31f1-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_fe250aa8-31f3-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ff49c202-3252-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ff49fede-3252-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ff7bda52-31c2-11e9-b68e-54ee75c0e204.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ff9b05c2-31e4-11e9-9167-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spiders/arts_tips_ffe3221a-3254-11e9-8a34-488ad21e5e8a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/0c536b7a-3270-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/0dda9c16-3270-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/24c5162a-3272-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/264bb58a-3272-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/36594254-3271-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/37e094a6-3271-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/47edfeac-3270-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/4975540a-3270-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/605f3d1e-3272-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/61e68a66-3272-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/71f432b0-3271-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/737b4c86-3271-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/8388ebfc-3270-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/851032b4-3270-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/951dbc90-326f-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/96a4f088-326f-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/9bf9eba8-3272-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/9d814ae8-3272-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/ad8eb8cc-3271-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/af162e28-3271-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/bf2448f0-3270-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/c0aae9e0-3270-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/d0b877cc-326f-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/d23fc190-326f-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/e9299596-3271-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/eab0fcf6-3271-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/fabe6a3a-3270-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/fc45cb6e-3270-11e9-9914-488ad21e5e8a.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_parts.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_parts.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,8 +700,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/component/handlers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="148" column="26" selection-start-line="148" selection-start-column="26" selection-end-line="148" selection-end-column="26" />
+            <state relative-caret-position="-253">
+              <caret line="163" column="27" selection-start-line="163" selection-start-column="20" selection-end-line="163" selection-end-column="27" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -56,16 +709,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_parts.py">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="67" column="13" lean-forward="true" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/component/parts.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3299">
+              <caret line="248" column="24" selection-start-line="248" selection-start-column="24" selection-end-line="248" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
+            <state relative-caret-position="-1753">
+              <caret line="259" column="42" selection-start-line="259" selection-start-column="42" selection-end-line="259" selection-end-column="80" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -86,19 +758,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/logs/spiders/arts_tips_81465324-31f4-11e9-9167-488ad21e5e8a.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/unittest/__init__.pyi">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-128">
-              <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+            <state relative-caret-position="-3444">
+              <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -108,27 +771,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
               <caret line="148" column="4" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/testing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5740">
-              <caret line="205" selection-start-line="205" selection-end-line="205" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/component/parts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3052">
-              <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -144,11 +786,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>def send_error</find>
-      <find>def finish</find>
-      <find>def put</find>
-      <find>bject</find>
-      <find>_UIModuleNamespace</find>
       <find>def get(</find>
       <find>HTTPError</find>
       <find>files</find>
@@ -173,10 +810,16 @@
       <find>file</find>
       <find>Test the API</find>
       <find>Aut</find>
+      <find>make_md5</find>
       <find>lol</find>
+      <find>the id</find>
+      <find>1550297128</find>
+      <find>Warning</find>
+      <find>skip</find>
     </findStrings>
     <replaceStrings>
       <replace>failed of parameters validator</replace>
+      <replace>str_to_hash</replace>
       <replace>Testing API</replace>
     </replaceStrings>
   </component>
@@ -225,13 +868,14 @@
         <option value="$PROJECT_DIR$/component/bases.py" />
         <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/server.py" />
-        <option value="$PROJECT_DIR$/component/parts.py" />
         <option value="$PROJECT_DIR$/tests/base_t.py" />
         <option value="$PROJECT_DIR$/tests/tests.py" />
         <option value="$PROJECT_DIR$/tests/test2.py" />
         <option value="$PROJECT_DIR$/component/handlers.py" />
         <option value="$PROJECT_DIR$/tests/test_part.py" />
         <option value="$PROJECT_DIR$/tests/test_handler.py" />
+        <option value="$PROJECT_DIR$/component/parts.py" />
+        <option value="$PROJECT_DIR$/tests/test_parts.py" />
       </list>
     </option>
   </component>
@@ -259,21 +903,6 @@
             <path>
               <item name="AsyncIns" type="b2602c69:ProjectViewProjectNode" />
               <item name="AsyncIns" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AsyncIns" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AsyncIns" type="462c0819:PsiDirectoryNode" />
-              <item name="component" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AsyncIns" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AsyncIns" type="462c0819:PsiDirectoryNode" />
-              <item name="eggs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AsyncIns" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AsyncIns" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AsyncIns" type="b2602c69:ProjectViewProjectNode" />
@@ -315,8 +944,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in test_handler.py">
-    <configuration name="pytest for test_handler.ProjectsHandlerTestCase" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.pytest in test_parts.py">
+    <configuration name="pytest for test_parts.PartsSimpleTestCase" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="AsyncIns" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -327,11 +956,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_handler.ProjectsHandlerTestCase&quot;" />
+      <option name="_new_target" value="&quot;test_parts.PartsSimpleTestCase&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_handler.ProjectsHandlerTestCase.test_projects_handler_post" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_parts.PartsSimpleTestCase.test_prep" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="AsyncIns" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -342,11 +971,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_handler.ProjectsHandlerTestCase.test_projects_handler_post&quot;" />
+      <option name="_new_target" value="&quot;test_parts.PartsSimpleTestCase.test_prep&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_handler.ProjectsHandlerTestCase.test_projects_post" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_parts.PartsSimpleTestCase.test_str_to_hash" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="AsyncIns" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -357,11 +986,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_handler.ProjectsHandlerTestCase.test_projects_post&quot;" />
+      <option name="_new_target" value="&quot;test_parts.PartsSimpleTestCase.test_str_to_hash&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_handler.RegisterHandlerTestCase.test_register_handler_post" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_parts.PartsSimpleTestCase.test_timedelta_format" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="AsyncIns" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -372,11 +1001,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_handler.RegisterHandlerTestCase.test_register_handler_post&quot;" />
+      <option name="_new_target" value="&quot;test_parts.PartsSimpleTestCase.test_timedelta_format&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in test_handler.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest in test_parts.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="AsyncIns" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -385,27 +1014,26 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_handler.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_parts.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python tests.pytest in test_handler.py" />
-      <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase.test_projects_post" />
-      <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase" />
-      <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase.test_projects_handler_post" />
-      <item itemvalue="Python tests.pytest for test_handler.RegisterHandlerTestCase.test_register_handler_post" />
+      <item itemvalue="Python tests.pytest in test_parts.py" />
+      <item itemvalue="Python tests.pytest for test_parts.PartsSimpleTestCase" />
+      <item itemvalue="Python tests.pytest for test_parts.PartsSimpleTestCase.test_timedelta_format" />
+      <item itemvalue="Python tests.pytest for test_parts.PartsSimpleTestCase.test_prep" />
+      <item itemvalue="Python tests.pytest for test_parts.PartsSimpleTestCase.test_str_to_hash" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest in test_handler.py" />
-        <item itemvalue="Python tests.pytest for test_handler.RegisterHandlerTestCase.test_register_handler_post" />
-        <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase.test_projects_handler_post" />
-        <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase" />
-        <item itemvalue="Python tests.pytest for test_handler.ProjectsHandlerTestCase.test_projects_post" />
+        <item itemvalue="Python tests.pytest in test_parts.py" />
+        <item itemvalue="Python tests.pytest for test_parts.PartsSimpleTestCase" />
+        <item itemvalue="Python tests.pytest for test_parts.PartsSimpleTestCase.test_str_to_hash" />
+        <item itemvalue="Python tests.pytest for test_parts.PartsSimpleTestCase.test_prep" />
+        <item itemvalue="Python tests.pytest for test_parts.PartsSimpleTestCase.test_timedelta_format" />
       </list>
     </recent_temporary>
   </component>
@@ -423,48 +1051,48 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 06m 47s.xml">
-      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    <history-entry file="pytest_for_test_parts_PartsSimpleTestCase_test_prep - 2019.02.17 at 15h 36m 59s.xml">
+      <configuration name="pytest for test_parts.PartsSimpleTestCase.test_prep" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_for_test_handler_RegisterHandlerTestCase_test_register_handler_post - 2019.02.17 at 12h 10m 31s.xml">
-      <configuration name="pytest for test_handler.RegisterHandlerTestCase.test_register_handler_post" configurationId="tests" />
+    <history-entry file="pytest_for_test_parts_PartsSimpleTestCase_test_prep - 2019.02.17 at 15h 37m 05s.xml">
+      <configuration name="pytest for test_parts.PartsSimpleTestCase.test_prep" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 35m 41s.xml">
-      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    <history-entry file="pytest_for_test_parts_PartsSimpleTestCase_test_prep - 2019.02.17 at 15h 37m 24s.xml">
+      <configuration name="pytest for test_parts.PartsSimpleTestCase.test_prep" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 36m 26s.xml">
-      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    <history-entry file="pytest_for_test_parts_PartsSimpleTestCase_test_prep - 2019.02.17 at 15h 37m 39s.xml">
+      <configuration name="pytest for test_parts.PartsSimpleTestCase.test_prep" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 37m 04s.xml">
-      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    <history-entry file="pytest_for_test_parts_PartsSimpleTestCase_test_str_to_hash - 2019.02.17 at 15h 39m 55s.xml">
+      <configuration name="pytest for test_parts.PartsSimpleTestCase.test_str_to_hash" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 37m 11s.xml">
-      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    <history-entry file="pytest_for_test_parts_PartsSimpleTestCase_test_str_to_hash - 2019.02.17 at 15h 40m 24s.xml">
+      <configuration name="pytest for test_parts.PartsSimpleTestCase.test_str_to_hash" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 37m 39s.xml">
-      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    <history-entry file="pytest_for_test_parts_PartsSimpleTestCase - 2019.02.17 at 15h 40m 39s.xml">
+      <configuration name="pytest for test_parts.PartsSimpleTestCase" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 40m 32s.xml">
-      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    <history-entry file="pytest_in_test_parts_py - 2019.02.17 at 15h 51m 05s.xml">
+      <configuration name="pytest in test_parts.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 41m 10s.xml">
-      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    <history-entry file="pytest_in_test_parts_py - 2019.02.17 at 15h 51m 42s.xml">
+      <configuration name="pytest in test_parts.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_test_handler_py - 2019.02.17 at 12h 49m 06s.xml">
-      <configuration name="pytest in test_handler.py" configurationId="tests" />
+    <history-entry file="pytest_in_test_parts_py - 2019.02.17 at 15h 51m 56s.xml">
+      <configuration name="pytest in test_parts.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1030" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.42094016" visible="true" weight="0.20431806" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.42094016" visible="true" weight="0.20431806" />
       <window_info id="Structure" order="1" sideWeight="0.57905984" side_tool="true" weight="0.20437567" />
       <window_info id="Favorites" order="2" sideWeight="0.50147927" side_tool="true" weight="0.19589257" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3269663" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4994664" visible="true" weight="0.32077625" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.8242009" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994664" visible="true" weight="0.4041096" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.336758" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -523,11 +1151,6 @@
           <option name="timeStamp" value="183" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/component/parts.py</url>
-          <line>53</line>
-          <option name="timeStamp" value="216" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/component/handlers.py</url>
           <line>19</line>
           <option name="timeStamp" value="218" />
@@ -546,7 +1169,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/logs/spiders/b0c92514-3018-11e9-a163-54ee75c0e204.log" />
     <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/tortoise/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
@@ -744,23 +1366,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/component/parts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3052">
-          <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/spiders/arts_tips_81465324-31f4-11e9-9167-488ad21e5e8a.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -795,13 +1400,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/unittest/__init__.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128">
-          <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
@@ -812,25 +1410,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/logs/spiders/arts_tips_81465324-31f4-11e9-9167-488ad21e5e8a.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/envpoll/lib/python3.7/site-packages/tornado/httputil.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1844">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/component/handlers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="148" column="26" selection-start-line="148" selection-start-column="26" selection-end-line="148" selection-end-column="26" />
+        <state relative-caret-position="-253">
+          <caret line="163" column="27" selection-start-line="163" selection-start-column="20" selection-end-line="163" selection-end-column="27" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_parts.py">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/component/parts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3299">
+          <caret line="248" column="24" selection-start-line="248" selection-start-column="24" selection-end-line="248" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_handler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
+        <state relative-caret-position="-1753">
+          <caret line="259" column="42" selection-start-line="259" selection-start-column="42" selection-end-line="259" selection-end-column="80" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/unittest/__init__.pyi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3444">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_parts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="67" column="13" lean-forward="true" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
