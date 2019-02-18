@@ -44,7 +44,7 @@ class IndexHandler(RestfulHandler):
         @apiGroup Index-get
         @apiPermission Observer
         @api {get} /
-        @apiHeader {String} Authorization json web token
+        @apiHeader {String} Authorization Json Web Token
         @apiUse Operations
         @apiSuccessExample {json} Success-Response:
         HTTP/1.1 200 OK
@@ -69,7 +69,7 @@ class ProjectsHandler(RestfulHandler):
         @apiGroup Projects-get
         @apiPermission Developer
         @api {get} /projects/
-        @apiHeader {String} Authorization json web token
+        @apiHeader {String} Authorization Json Web Token
         @apiUse Operations
         @apiSuccessExample {json} Success-Response:
         HTTP/1.1 200 OK
@@ -97,7 +97,7 @@ class ProjectsHandler(RestfulHandler):
         @apiGroup Projects-post
         @apiPermission Developer
         @api {post} /projects/
-        @apiHeader {String} Authorization json web token
+        @apiHeader {String} Authorization Json Web Token
         @apiParam {String} project Project name.
         @apiParam {Bool} ssp Is ssp.
         @apiParam {File} eggs egg file.
@@ -140,7 +140,7 @@ class ProjectsHandler(RestfulHandler):
         @apiGroup Projects-delete
         @apiPermission Developer
         @api {delete} /projects/
-        @apiHeader {String} Authorization json web token
+        @apiHeader {String} Authorization Json Web Token
         @apiParam {Int} id project id of databases.
         @apiParam {String} project Project name.
         @apiParam {Int} version project version.
@@ -175,14 +175,21 @@ class SchedulersHandler(RestfulHandler):
         @apiGroup Schedulers-get
         @apiPermission Developer
         @api {get} /Schedulers/
-        @apiHeader {String} Authorization json web token
+        @apiHeader {String} Authorization Json Web Token
         @apiUse Operations
         @apiSuccessExample {json} Success-Response:
         HTTP/1.1 200 OK
-        {'id': 1, 'jid': 'p3fd0909803032nm', 'project': 'arts', 'spider': 'fact',
+        {"count": 2,
+        "current": {'id': 1, 'jid': 'p3fd0909803032nm', 'func': 'executor.rider'
+        'project': 'arts', 'spider': 'fact',
+             'version': 1563206963652, 'ssp': 1, 'job': 25fd-09098f-2032-dfs20,
+             'mode': 'date, 'timer': {'run_date': '2019-03-10'}, 'status': 1,
+             'creator': 'username'},
+        "result": {'id': 1, 'jid': 'p3fd0909803032nm', 'project': 'arts', 'spider': 'fact',
              'version': 1563206963652, 'ssp': 1, 'job': 25fd-09098f-2032-dfs20,
              'mode': 'date, 'timer': {'run_date': '2019-03-10'}, 'status': 1,
              'creator': 'username', 'create': 2019-02-22 10:00:00}
+        }
         """
         arguments = SchedulersForm(self.request.arguments)
         if not arguments.validate():
@@ -200,6 +207,25 @@ class SchedulersHandler(RestfulHandler):
         await self.over(data=response)
 
     async def post(self, *args, **kwargs):
+        """
+        @apiGroup Schedulers-post
+        @apiPermission Developer
+        @api {post} /schedulers/
+        @apiHeader {String} Authorization Json Web Token
+        @apiParam {String} project Project name.
+        @apiParam {Int} version Project version.
+        @apiParam {String} spider Spider name.
+        @apiParam {Bool} ssp Is ssp.
+        @apiParam {Bool} status Is is effective.
+        @apiParam {String} mode 'date' or 'interval' or 'cron.
+        @apiParam {Dict} timer {'seconds': 5} or {'run_date': '2019-02-20 18:00:00'}.
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 201 OK
+        {'project': project, 'version': version, 'status': status, 'message': 'successful'}
+        @apiErrorExample {json} Error-Response:
+        HTTP/1.1 400 OK
+        {'message': 'failed of parameters validator'}
+        """
         arguments = SchedulersForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -234,6 +260,22 @@ class SchedulersHandler(RestfulHandler):
         await self.over(201, {'project': project, 'version': version, 'status': status, 'message': 'successful'})
 
     async def put(self, *args, **kwargs):
+        """
+        @apiGroup Schedulers-put
+        @apiPermission Developer
+        @api {put} /schedulers/
+        @apiHeader {String} Authorization Json Web Token
+        @apiParam {Int} Id From databases.
+        @apiParam {Bool} status Is is effective.
+        @apiParam {String} mode 'date' or 'interval' or 'cron.
+        @apiParam {Dict} timer {'seconds': 5} or {'run_date': '2019-02-20 18:00:00'}.
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {'project': query.project, 'version': query.version, 'status': status, 'message': 'successful'}
+        @apiErrorExample {json} Error-Response:
+        HTTP/1.1 400 OK
+        {'message': 'This scheduler dose not exist'}
+        """
         arguments = SchedulersForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -271,6 +313,19 @@ class SchedulersHandler(RestfulHandler):
         await self.over(data={'project': query.project, 'version': query.version, 'status': status, 'message': 'successful'})
 
     async def delete(self, *args, **kwargs):
+        """
+        @apiGroup Schedulers-delete
+        @apiPermission Developer
+        @api {delete} /schedulers/
+        @apiHeader {String} Authorization Json Web Token
+        @apiParam {Int} id project id of databases.
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {'id': 1, 'project': 'arts, 'spider': 'fact',
+                    'version': 1563020120320, 'jid': '120fd50fsd50fd80sdf', 'mode': 'interval',
+                    'timer': '{'seconds': 5}', 'message': 'successful'}
+        @apiUse ErrorExamples
+        """
         arguments = SchedulersForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -290,7 +345,27 @@ class SchedulersHandler(RestfulHandler):
 
 
 class RecordsHandler(RestfulHandler):
+    permission = 'developer'
+
     async def get(self, *args, **kwargs):
+        """
+        @apiGroup Records-get
+        @apiPermission Developer
+        @api {get} /records/
+        @apiHeader {String} Authorization Json Web Token
+        @apiUse Operations
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {"count": 5,
+        "results":{'id': 1, 'project': 'arts', 'spider': 'fact',
+             'version': 1563206963652, 'ssp': 1, 'job': 25fd-09098f-2032-dfs20,
+             'mode': 'date, 'timer': {'run_date': '2019-03-10'}, 'status': 1,
+             'start': 2019-03-10 18:00:00, 'end': 2019-03-10 18:00:20,
+             'period': '0-days 20 seconds',
+             'creator': 'username', 'create': 2019-02-22 10:00:00}
+        }
+        @apiUse ErrorExamples
+        """
         arguments = RecordsForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -308,7 +383,24 @@ class RecordsHandler(RestfulHandler):
 
 
 class OperationLogHandler(RestfulHandler):
+    permission = 'superuser'
+
     async def get(self, *args, **kwargs):
+        """
+        @apiGroup OperationLog-get
+        @apiPermission Developer
+        @api {get} /operations/
+        @apiHeader {String} Authorization Json Web Token
+        @apiUse Operations
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {"count": 5,
+        "results":{'id': 1, 'operator': 'username', 'interface': 'projects',
+             'method': 'GET', 'status_code': 400, 'hostname': 'Mac book',
+             'args': '{'project': 'arts'}', 'address': 127.0.0.1, 'create': 2019-02-22 10:00:00}
+        }
+        @apiUse ErrorExamples
+        """
         arguments = OperationLogForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -326,6 +418,20 @@ class OperationLogHandler(RestfulHandler):
 class RegisterHandler(RestfulHandler):
 
     async def post(self):
+        """
+        @apiGroup Register-put
+        @api {put} /reg/
+        @apiParam {String} username username.
+        @apiParam {String} password password.
+        @apiParam {String} email email.
+        @apiParam {String} role 'observer' or 'developer' or 'superuser'.
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 201 OK
+        {'message': 'welcome：{username} '.format(username=username)}
+        @apiErrorExample {json} Error-Response:
+        HTTP/1.1 400 OK
+        {'message': 'superuser is exist'}
+        """
         arguments = UserForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -347,7 +453,22 @@ class RegisterHandler(RestfulHandler):
 
 
 class LoginHandler(RestfulHandler):
+
     async def post(self, *args, **kwargs):
+        """
+        @apiGroup Login-post
+        @api {put} /login/
+        @apiParam {String} username username.
+        @apiParam {String} password password.
+        @apiParam {String} [code] verify code(superuser do not need code).
+
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {'id': 1, 'username': user.username, 'token': 'fda14afw.4f6afd8.fa4fdfa.fdw5f'}
+        @apiErrorExample {json} Error-Response:
+        HTTP/1.1 400 OK
+        {'message': 'verify code error'}
+        """
         arguments = LoginForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -379,8 +500,23 @@ class LoginHandler(RestfulHandler):
 
 
 class UserHandler(RestfulHandler):
+    permission = 'superuser'
 
     async def get(self):
+        """
+        @apiGroup User-get
+        @apiPermission Superuser
+        @api {get} /user/
+        @apiHeader {String} Authorization Json Web Token
+        @apiUse Operations
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {"count": 5,
+        "results":{'id': 1, 'username': 'username', 'status': true,
+             'verify': true, 'code': 'flower', 'create_time': 2019-02-22 10:00:00}
+        }
+        @apiUse ErrorExamples
+        """
         arguments = UserForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -394,6 +530,21 @@ class UserHandler(RestfulHandler):
         await self.over(data=response)
 
     async def put(self, *args, **kwargs):
+        """
+        @apiGroup User-put
+        @apiPermission Superuser
+        @api {put} /user/
+        @apiParam {Int} id user id.
+        @apiParam {String} [password] password.
+        @apiParam {Bool} [status] status.
+        @apiParam {String} [email] email.
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {'message': 'successful'}
+        @apiErrorExample {json} Error-Response:
+        HTTP/1.1 400 OK
+        {'message': 'user dose not exist'}
+        """
         arguments = LoginForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -415,6 +566,18 @@ class UserHandler(RestfulHandler):
         await self.over(data={'message': 'successful'})
 
     async def delete(self, *args, **kwargs):
+        """
+        @apiGroup User-delete
+        @apiPermission Superuser
+        @api {put} /user/
+        @apiParam {Int} id user id.
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {'message': 'successful'}
+        @apiErrorExample {json} Error-Response:
+        HTTP/1.1 400 OK
+        {'message': 'user dose not exist'}
+        """
         arguments = LoginForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
