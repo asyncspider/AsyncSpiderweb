@@ -1,7 +1,11 @@
 # Asw 简介
+
 AsyncSpiderWeb(Asw) 是一个适合企业爬虫部门或团队使用的高性能爬虫调度与管理平台。Asw 基于Tornado 和 Tortoise-ORM，这使得它拥有 "轻" 和 "快" 两个优点。
 
 Asw 借鉴了 Scrapyd 的部分设计，并继承 Python3 中 Asyncio 库以及异步框架 Tornado 的优点。
+
+![image](https://github.com/asyncins/Asw/blob/master/AsyncSpiderweb.jpg)
+
 
 Asw 可以同时兼容 Scrapy 项目和符合目录结构设定的任何 Python 项目，这意味着你使用 Requests 库和 Aiohttp 库或者其他 Python 框架所编写的项目，都可以部署到 Asw，以实现
 对项目的调度和管理。除了项目的部署和调度以外，它还具备用户注册、登录以及权限功能，这使得它很适合团队使用。
