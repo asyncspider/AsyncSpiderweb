@@ -1,0 +1,7 @@
+{
+  "name": "AsyncSpiderweb",
+  "version": "1.0.0",
+  "description": "AsyncSpiderweb API basic example",
+  "title": "Asw API docs",
+  "url" : "https://localhost:8205/api/v1"
+}

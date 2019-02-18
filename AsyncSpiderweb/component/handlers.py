@@ -11,8 +11,22 @@ from model import Projects, Schedulers, Records
 from settings import schedulers, SECRET, ALGORITHM
 
 
+"""
+    @apiDefine Operations
+    @apiParam {Number} [limit=LIMIT_DEFAULT]   Optional Limit with default LIMIT_DEFAULT.
+    @apiParam {String} [ordering='id']  Optional Ordering default 'id'.
+    @apiParam {Number} [offset=OFFSET_DEFAULT]   Optional Limit with default OFFSET_DEFAULT.
+    @apiParam {String} [fieldname]  filter field.
+"""
+"""
+    @apiDefine ErrorExamples
+    @apiErrorExample {json} Error-Response:
+            HTTP/1.1 400 OK
+            {'message': 'failed of parameters validator'}
+"""
+
+
 class IndexHandler(RestfulHandler):
-    permission = 'observer'
 
     # @authorization
     # async def get(self, *args, **kwargs):
@@ -23,8 +37,22 @@ class IndexHandler(RestfulHandler):
     #     print('this is index handler')
     #     data = await get_spider_list('arts', '1550036771')
     #     logging.warning(data)
+    permission = 'observer'
 
     async def get(self, *args, **kwargs):
+        """
+        @apiGroup Index-get
+        @apiPermission Observer
+        @api {get} /
+        @apiHeader {String} Authorization json web token
+        @apiUse Operations
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {
+            "first name": "John",
+            "last name": "Doe"
+        }
+        """
         jobs = get_current_jobs(schedulers.get_jobs())
         response = dict(count=len(jobs))
         response['result'] = jobs
@@ -33,9 +61,23 @@ class IndexHandler(RestfulHandler):
 
 class ProjectsHandler(RestfulHandler):
 
+    permission = 'developer'
     storage = FileStorage()
 
     async def get(self, *args, **kwargs):
+        """
+        @apiGroup Projects-get
+        @apiPermission Developer
+        @api {get} /projects/
+        @apiHeader {String} Authorization json web token
+        @apiUse Operations
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {'id': 1, 'project': 'arts', 'spiders': 'keeper, facts, hydra',
+             'version': 1560326985623, 'ssp': false, 'number': 3,
+             'filename': 'arts_1560326985623.egg,  'creator': 'username',
+             'create': 2019-02-22 10:00:00}
+        """
         arguments = ProjectsForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -51,6 +93,21 @@ class ProjectsHandler(RestfulHandler):
         await self.over(data=response)
 
     async def post(self, *args, **kwargs):
+        """
+        @apiGroup Projects-post
+        @apiPermission Developer
+        @api {post} /projects/
+        @apiHeader {String} Authorization json web token
+        @apiParam {String} project Project name.
+        @apiParam {Bool} ssp Is ssp.
+        @apiParam {File} eggs egg file.
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 201 OK
+        {'spider': spiders, 'number': number, 'message': 'successful'}
+        @apiErrorExample {json} Error-Response:
+        HTTP/1.1 400 OK
+        {'message': 'failed of parameters validator'}
+        """
         arguments = ProjectsForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -79,6 +136,19 @@ class ProjectsHandler(RestfulHandler):
         await self.over(201, {'spider': spiders, 'number': number, 'message': 'successful'})
 
     async def delete(self, *args, **kwargs):
+        """
+        @apiGroup Projects-delete
+        @apiPermission Developer
+        @api {delete} /projects/
+        @apiHeader {String} Authorization json web token
+        @apiParam {Int} id project id of databases.
+        @apiParam {String} project Project name.
+        @apiParam {Int} version project version.
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 201 OK
+        {'project': project, 'version': version, 'message': 'successful'}
+        @apiUse ErrorExamples
+        """
         arguments = ProjectsForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
@@ -98,8 +168,22 @@ class ProjectsHandler(RestfulHandler):
 
 
 class SchedulersHandler(RestfulHandler):
+    permission = 'developer'
 
     async def get(self, *args, **kwargs):
+        """
+        @apiGroup Schedulers-get
+        @apiPermission Developer
+        @api {get} /Schedulers/
+        @apiHeader {String} Authorization json web token
+        @apiUse Operations
+        @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {'id': 1, 'jid': 'p3fd0909803032nm', 'project': 'arts', 'spider': 'fact',
+             'version': 1563206963652, 'ssp': 1, 'job': 25fd-09098f-2032-dfs20,
+             'mode': 'date, 'timer': {'run_date': '2019-03-10'}, 'status': 1,
+             'creator': 'username', 'create': 2019-02-22 10:00:00}
+        """
         arguments = SchedulersForm(self.request.arguments)
         if not arguments.validate():
             return await self.interrupt(400, 'failed of parameters validator')
